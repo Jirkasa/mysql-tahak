@@ -1,0 +1,95 @@
+V tomto souboru si rozepíšu části webových stránek:
+
+DATABÁZE A TABULKY, DATOVÉ TYPY, CRUD OPERACE, PRIMARY A FOREIGN KEY, STRING FUNKCE, LOGICKÉ OPERÁTORY, VZTAHY MEZI TABULKAMI, TRIGGERY
+- zatím to teda vypadá takto, možná to později ještě změním
+
+
+DATABÁZE A TABULKY
+    CREATE DATABASE
+    DROP DATABASE
+    CREATE TABLE
+        NOT NULL
+        DEFAULT
+        UNIQUE
+    DROP TABLE
+    SELECT database();
+    USE database;
+    SHOW TABLES;
+    SHOW COLUMNS FROM table;
+    DESC table;
+        DESCRIBE
+
+DATOVÉ TYPY
+    CURDATE
+    CURTIME
+    DAY, DAYNAME, DAYOFYEAR, DATE_FORMAT
+    DATEDIFF
+    DATE_ADD, DATE_SUB
+
+CRUD OPERACE
+    INSERT
+        INSERT INTO table ...
+        - i ta druhá verze pokud je
+    SELECT
+        AS
+        DISTINCT
+        ORDER BY
+            ASC, DESC
+        LIMIT
+        LIKE
+        COUNT
+        SUM
+        AVG
+        ROUND
+        IF funkce
+        MIN MAX
+        IFNULL
+        GROUP BY
+            můžeme tam použít aliasy, které jsme si určili při SELECT
+            HAVING
+        WHERE - tady ty věci se dají použít i u jiných operací, nebudu to dávat přímo k select ale až někam dole možná
+    UPDATE
+    DELETE
+    - subquery
+    SHOW WARNING;
+    spouštění queries ze souboru: source soubor.sql;
+
+PRIMARY A FOREIGN KEY
+        AUTO_INCREMENT
+        NOT NULL
+        ON DELETE CASCADE
+        primary key jako více hodnot
+
+STRING FUNCTIONS
+    - asi jen nějaké, všechny ne, na ostatní přidám odkaz
+    CONCAT
+    CONCAT_WS
+    SUBSTRING
+    REPLACE
+    CHAR_LENGTH
+    UPPER
+    LOWER
+
+LOGICKÉ OPERÁTORY
+    - operátory
+    CAST
+    BETWEEN
+    NOT BETWEEN
+    LIKE
+    NOT LIKE
+    IN
+    NOT IN
+    CASE
+        WHEN THEN ...
+    IS NULL
+
+VZTAHY MEZI TABULKAMI
+    ONE TO ONE
+    ONE TO MANY
+    MANY TO MANY
+    - FOREIGN KEY
+    FROM z více tabulek (CROSS JOIN)
+    INNER JOIN, LEFT JOIN, RIGHT JOIN
+    více JOINŮ za sebou
+
+TRIGGERY
