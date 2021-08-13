@@ -1,0 +1,21 @@
+.main-btn {
+    &:link, &:visited {
+        display: inline-block;
+
+        font-size: 1.6rem;
+        font-weight: 700;
+
+        background-color: @colors[pink];
+        color: @colors[white];
+        text-decoration: none;
+        border-radius: 5px;
+
+        padding: 1rem 2rem;
+    }
+
+    &--bigger {
+        &:link, &:visited {
+            font-size: 2rem;
+        }
+    }
+}

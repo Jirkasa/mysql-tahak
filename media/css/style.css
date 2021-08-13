@@ -35,3 +35,60 @@ body {
 body {
   font-family: 'Raleway', sans-serif;
 }
+.welcome-heading {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+.paragraph {
+  font-size: 1.6rem;
+  color: #000;
+}
+.paragraph--light {
+  color: #d4d4d4;
+}
+.paragraph--bigger {
+  font-size: 1.8rem;
+}
+.paragraph--big-line-height {
+  line-height: 1.8;
+}
+.u-margin-bottom-small {
+  margin-bottom: 1rem;
+}
+.u-margin-bottom-medium {
+  margin-bottom: 2rem;
+}
+.u-margin-bottom-large {
+  margin-bottom: 3rem;
+}
+.main-btn:link,
+.main-btn:visited {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  background-color: #fb6470;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+}
+.main-btn--bigger:link,
+.main-btn--bigger:visited {
+  font-size: 2rem;
+}
+.home-welcome-section {
+  height: 100vh;
+  background-image: url(../../media/img/Background.jpg);
+  background-size: cover;
+}
+.home-welcome-section__content {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 114rem;
+  padding: 1rem;
+  text-align: center;
+}
