@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/Jirkasa/mysql-tahak/issues"
   },
-  "homepage": "https://github.com/Jirkasa/mysql-tahak#readme"
+  "homepage": "https://github.com/Jirkasa/mysql-tahak#readme",
+  "dependencies": {
+    "autoprefixer": "^10.3.1",
+    "concat": "^1.0.3",
+    "less": "^4.1.1",
+    "nodemon": "^2.0.12",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1"
+  }
 }
