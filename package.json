@@ -4,7 +4,10 @@
   "description": "MySQL Cheat Sheet website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:less": "lessc ./less/main.less ./media/css/style.css",
+    "nodemon:compile:less": "nodemon -e less -x \"npm run compile:less\"",
+    "concat:css": "concat -o media/css/style.concat.css media/css/icofont.min.css media/css/style.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 5 versions' media/css/style.concat.css -o media/css/style.prefix.css"
   },
   "repository": {
     "type": "git",
