@@ -4,20 +4,21 @@ DATABÁZE A TABULKY, DATOVÉ TYPY, CRUD OPERACE, PRIMARY A FOREIGN KEY, STRING F
 - zatím to teda vypadá takto, možná to později ještě změním
 
 
-DATABÁZE A TABULKY
-    CREATE DATABASE
-    DROP DATABASE
-    CREATE TABLE
-        NOT NULL
-        DEFAULT
-        UNIQUE
-    DROP TABLE
-    SELECT database();
-    USE database;
-    SHOW TABLES;
-    SHOW COLUMNS FROM table;
-    DESC table;
-        DESCRIBE
+DATABÁZE A TABULKY - ZATÍM HOTOVO
+    SHOW DATABASES - HOTOVO
+    CREATE DATABASE - HOTOVO
+    DROP DATABASE - HOTOVO
+    CREATE TABLE - HOTOVO
+        NOT NULL - HOTOVO
+        DEFAULT - HOTOVO
+        UNIQUE - HOTOVO
+    DROP TABLE - HOTOVO
+    SELECT database(); - HOTOVO
+    USE database; - HOTOVO
+    SHOW TABLES; - HOTOVO
+    SHOW COLUMNS FROM table; - HOTOVO
+    DESC table; - HOTOVO
+        DESCRIBE - HOTOVO
 
 DATOVÉ TYPY
     CURDATE
@@ -93,3 +94,8 @@ VZTAHY MEZI TABULKAMI
     více JOINŮ za sebou
 
 TRIGGERY
+
+
+
+
+nástroj pro highlightování kódu: https://highlight.hohli.com/

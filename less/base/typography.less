@@ -18,10 +18,25 @@ body {
     color: @colors[third-grey];
 }
 
-.paragraph {
-    font-size: 1.6rem;
+.heading-secondary {
+    font-size: 3rem;
+    font-weight: 700;
 
     color: @colors[third-grey];
+}
+
+.heading-tertiary {
+    font-size: 2rem;
+    font-weight: 700;
+
+    color: @colors[third-grey];
+}
+
+.paragraph {
+    font-size: 1.7rem;
+
+    color: @colors[third-grey];
+    line-height: 1.4;
 
     &--light {
         color: @colors[light-grey];
@@ -33,5 +48,9 @@ body {
 
     &--big-line-height {
         line-height: 1.8;
+    }
+
+    &--right-padding {
+        padding-right: 10rem;
     }
 }
