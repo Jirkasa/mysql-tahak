@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>MySQL Tahák - Datové Typy</title>
+</head>
+<body>
+    <header class="header">
+        <a href="../" class="header__home-link">MySQL Tahák</a>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side"></nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">Datové Typy</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato stránka obsahuje přehled datových typů, které v MySQL databázi můžeme použít. Dají se rozdělit na tři skupiny: číselné, řetězcové a datumové.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Číselné datové typy</h2>
+                <h3 class="heading-tertiary">BIT(velikost)</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává bitovou hodnotu. Počet bitů si můžeme určit zapsáním do závorky. Minimální počet bitů je 1 a maximální je 64. Defaultní velikost je 1 bit.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> moje_tabulka
+<span style="color: #FF00FF;">&#40;</span>
+    bity <span style="color: #999900; font-weight: bold;">BIT</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">8</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># sloupec s bitovou hodnotou o délce 8 bitů</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> moje_tabulka <span style="color: #FF00FF;">&#40;</span>bity<span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># vložení bitové hodnoty do tabulky</span>
+<span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span>b<span style="color: #008000;">'01101011'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">LPAD</span><span style="color: #FF00FF;">&#40;</span><span style="color: #000099;">BIN</span><span style="color: #FF00FF;">&#40;</span>bity<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #008080;">8</span><span style="color: #000033;">,</span> <span style="color: #008000;">'0'</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> bity <span style="color: #808080; font-style: italic;"># získání bitové hodnoty z tabulky</span>
+<span style="color: #990099; font-weight: bold;">FROM</span> moje_tabulka<span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">TINYINT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává celé číslo od -128 do 127. Pokud jej specifikujeme jako UNSIGNED, tak bude uchovávat celé číslo od 0 do 255.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">TINYINT</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od -128 do 127</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">TINYINT</span> <span style="color: #FF9900; font-weight: bold;">UNSIGNED</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od 0 do 255</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">SMALLINT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává celé číslo od -32768 do 32767. Pokud jej specifikujeme jako UNSIGNED, tak bude uchovávat celé číslo od 0 do 65535.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">SMALLINT</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od -32768 do 32767</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">SMALLINT</span> <span style="color: #FF9900; font-weight: bold;">UNSIGNED</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od 0 do 65535</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">MEDIUMINT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává celé číslo od -8388608 do 8388607. Pokud jej specifikujeme jako UNSIGNED, tak bude uchovávat celé číslo od 0 do 16777215.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">MEDIUMINT</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od -8388608 do 8388607</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">MEDIUMINT</span> <span style="color: #FF9900; font-weight: bold;">UNSIGNED</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od 0 do 16777215</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">INT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává celé číslo od -2147483648 do 2147483647. Pokud jej specifikujeme jako UNSIGNED, tak bude uchovávat celé číslo od 0 do 4294967295.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">INT</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od -2147483648 do 2147483647</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">INT</span> <span style="color: #FF9900; font-weight: bold;">UNSIGNED</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od 0 do 4294967295</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">INTEGER</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ je stejný jako datový typ INT, který je jeho zkratkou.</p>
+                <h3 class="heading-tertiary">BIGINT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává celé číslo od -9223372036854775808 do 9223372036854775807. Pokud jej specifikujeme jako UNSIGNED, tak bude uchovávat celé číslo od 0 do 18446744073709551615.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">BIGINT</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od -9223372036854775808 do 9223372036854775807</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">BIGINT</span> <span style="color: #FF9900; font-weight: bold;">UNSIGNED</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat čísla od 0 do 18446744073709551615</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">DECIMAL(počet číslic, počet číslic za desetinnou čárkou)</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ přesně uchovává číslo s desetinnou částí. V závorce si můžeme určit maximální počet číslic před i za desetinnou čárkou. Minimum je 1, maximum je 65 a defaultní hodnota je 10. Dále si tam také určujeme kolik číslic může být za desetinnou čárkou. Minimum je 0, maximum je 30 a defaultní hodnota je 0. Pokud při vkládání položky do tabulky předáme větší číslo než je možné, tak se nastaví nejvyšší možné číslo. Pokud předáme číslo s více číslicemi za desetinnou čárkou než je možné, tak se číslo zaokrouhlí.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">DECIMAL</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">30</span><span style="color: #000033;">,</span> <span style="color: #008080;">2</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># číslo s maximálním počtem 30 číslic a 2 číslicemi za desetinnou čárkou</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">DECIMAL</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">35</span><span style="color: #000033;">,</span> <span style="color: #008080;">5</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># číslo s maximálním počtem 35 číslic a 5 číslicemi za desetinnou čárkou</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">DEC(počet číslic, počet číslic za desetinnou čárkou)</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ je zkratkou pro datový typ DECIMAL.</p>
+                <h3 class="heading-tertiary">FLOAT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává číslo s desetinnou částí. Zabírá 4 bajty. Výpočty jsou narozdíl od DECIMAL přibližné, ale výhodou je že může ukládat větší číslo s použitím méně místa. Nepřesnosti se mohou objevit kolem 7 číslic.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">FLOAT</span><span style="color: #000033;">,</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">FLOAT</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">DOUBLE</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává číslo s desetinnou částí. Zabírá 8 bajtů. Výpočty jsou narozdíl od DECIMAL přibližné, ale výhodou je že může ukládat větší číslo s použitím méně místa. Nepřesnosti se mohou objevit kolem 15 číslic.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> cisla
+<span style="color: #FF00FF;">&#40;</span>
+    prvni_cislo <span style="color: #999900; font-weight: bold;">FLOAT</span><span style="color: #000033;">,</span>
+    druhe_cislo <span style="color: #999900; font-weight: bold;">FLOAT</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">BOOL</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává hodnotu true nebo false (pravdu nebo nepravdu). MySQL ale tyto hodnoty v tabulce ukládá jako čísla (TINYINT). Pokud se číslo rovná nule, jedná se o false, jinak se jedná o true.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
+<span style="color: #FF00FF;">&#40;</span>
+    username <span style="color: #999900; font-weight: bold;">VARCHAR</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">30</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span>
+    verified <span style="color: #999900; font-weight: bold;">BOOL</span> <span style="color: #990099; font-weight: bold;">DEFAULT</span> <span style="color: #9900FF; font-weight: bold;">false</span> <span style="color: #808080; font-style: italic;"># sloupec uchovávající true nebo false</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> users <span style="color: #FF00FF;">&#40;</span>username<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Karel'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> username<span style="color: #000033;">,</span> <span style="color: #009900;">IF</span><span style="color: #FF00FF;">&#40;</span>verified<span style="color: #000033;">,</span> <span style="color: #008000;">'true'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'false'</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> verified <span style="color: #808080; font-style: italic;"># abychom z tabulky nezískali číselnou hodnotu ale true nebo false, tak k tomu můžeme použít funkci IF</span>
+<span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">BOOLEAN</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tento datový typ je stejný jako datový typ BOOL, který je jeho zkratkou.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Řetězcové datové typy</h2>
+                <h3 class="heading-tertiary">CHAR(počet znaků)</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává textový řetězec, který obsahuje přesný počet znaků. Počet znaků si můžeme určit zapsáním do závorky. Defaultní hodnota je 1 a maximální je 255. Pokud do tabulky vložíme řetězec, který bude mít více znaků než je nastaveno, tak se řetězec ořízne (neuloží se celý). Pokud vložíme řetězec, který bude mít méně znaků než je nastaveno, tak se k němu přidají mezery (tyto mezery se smažou když řetězec z databáze přečteme). Datový typ CHAR se hodí pro text, který má stejnou délku, bude to rychlejší.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
+<span style="color: #FF00FF;">&#40;</span>
+    username <span style="color: #999900;">CHAR</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">30</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat řetězce o přesné délce 30 znaků</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">VARCHAR(maximální počet znaků)</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává textový řetězec, který má menší nebo stejný počet znaků jako maximální nastavený počet znaků. Maximální počet znaků si můžeme určit zapsáním do závorky. Můžeme jej nastavit až na 65535 znaků.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
+<span style="color: #FF00FF;">&#40;</span>
+    username <span style="color: #999900; font-weight: bold;">VARCHAR</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">30</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat řetězce o maximální délce 30 znaků</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">TEXT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává textový řetězec o maximální délce 65535 bajtů. Rozdíl mezi datovým typem TEXT a VARCHAR je ten, že TEXT se neukládá přímo v tabulce, ale někde jinde. V tabulce se na něj jen odkazuje. Na video o datových typech TEXT, TINYTEXT, MEDIUMTEXT a LONGTEXT se můžete podívat <a href="https://www.youtube.com/watch?v=qhFkXAWl9s4&ab_channel=CalebCurry" target="_blank" class="anchor">zde</a>.</p>
+                <h3 class="heading-tertiary">TINYTEXT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává textový řetězec o maximální délce 255 znaků.</p>
+                <h3 class="heading-tertiary">MEDIUMTEXT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává textový řetězec o maximální délce 16777215 znaků.</p>
+                <h3 class="heading-tertiary">LONGTEXT</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává textový řetězec o maximální délce 4294967295 znaků.</p>
+                <h3 class="heading-tertiary">BINARY(velikost)</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ je stejný jako datový typ CHAR. Rozdíl je ale v tom že MySQL bude brát data ve sloupci jak surové bajty než jako zakódovaný text. (alespoň myslím)</p>
+                <h3 class="heading-tertiary">VARBINARY(velikost)</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ je stejný jako datový typ VARCHAR. Rozdíl je ale v tom že MySQL bude brát data ve sloupci jak surové bajty než jako zakódovaný text. (alespoň myslím)</p>
+                <h3 class="heading-tertiary">BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tyto datové typy uchovávají 'Binary Large Objects'.</p>
+                <h3 class="heading-tertiary">ENUM</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí tohoto datového typu můžeme specifikovat seznam řetězců, které můžeme do sloupce ukládat. Pokud se do sloupce pokusíme uložit řetězec, který není v seznamu, tak se uloží prázdný řetězec.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> shirts <span style="color: #FF00FF;">&#40;</span>
+    name <span style="color: #999900; font-weight: bold;">VARCHAR</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">40</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span>
+    size <span style="color: #999900; font-weight: bold;">ENUM</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'x-small'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'small'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'medium'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'large'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'x-large'</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># vytvoření seznamu řetězců, které do sloupce můžeme uložit</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> shirts <span style="color: #FF00FF;">&#40;</span>name<span style="color: #000033;">,</span> size<span style="color: #FF00FF;">&#41;</span>
+<span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'dress shirt'</span><span style="color: #000033;">,</span><span style="color: #008000;">'large'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'t-shirt'</span><span style="color: #000033;">,</span><span style="color: #008000;">'medium'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'polo shirt'</span><span style="color: #000033;">,</span><span style="color: #008000;">'small'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vložení nových položek do tabulky</span></pre>
+                </div>
+                <h3 class="heading-tertiary">SET</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí tohoto datového typu můžeme specifikovat hodnoty, které mohou vkládané řetězce do tabulky obsahovat. Jednotlivé hodnoty ve vkládaném řetězci oddělujeme čárkou. Pokud nějakou hodnotu do řetězce napíšeme vícekrát, použije se jen jednou. Myslím že následující ukázka kódu ukazuje datový typ SET lépe než text.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> tabulka
+<span style="color: #FF00FF;">&#40;</span>
+    sloupec <span style="color: #990099; font-weight: bold;">SET</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'a'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'b'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'c'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'d'</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># vytvoření seznamu hodnot, které řetězce budou moci obsahovat</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> tabulka <span style="color: #FF00FF;">&#40;</span>sloupec<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #808080; font-style: italic;"># vložení nových položek do tabulky</span>
+    <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'a,d'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'d,a'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'a,d,a'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'a,d,d'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'d,a,d'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># jednotlivé hodnoty v řetězci oddělujeme čárkou</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> tabulka<span style="color: #000033;">;</span>
+<span style="color: #808000; font-style: italic;">/*
+vypíše se:
++----------+
+| sloupec  |
++----------+
+| a,d      |
+| a,d      |
+| a,d      |
+| a,d      |
+| a,d      |
++----------+
+*/</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Datumové datové typy</h2>
+                <h3 class="heading-tertiary">DATE</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává datum ve formátu YYYY-MM-DD (rok-měsíc-den).</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> datumy
+<span style="color: #FF00FF;">&#40;</span>
+    datum <span style="color: #999900; font-weight: bold;">DATE</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat datumy</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> datumy <span style="color: #FF00FF;">&#40;</span>datum<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-14'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vložení datumu do tabulky</span></pre>
+                </div>
+                <h3 class="heading-tertiary">TIME</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává čas ve formátu hh:mm:ss (hodiny:minuty:sekundy). Podporovaný rozsah je od '-838:59:59' do '838:59:59'.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> casy
+<span style="color: #FF00FF;">&#40;</span>
+    cas <span style="color: #999900; font-weight: bold;">TIME</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat časy</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> casy <span style="color: #FF00FF;">&#40;</span>cas<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'20:15:00'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vložení času do tabulky</span></pre>
+                </div>
+                <h3 class="heading-tertiary">DATETIME</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává dohromady datum a čas ve formátu YYYY-MM-DD hh:mm:ss (rok-měsíc-den hodiny:minuty:sekundy).</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> datumy_s_casy
+<span style="color: #FF00FF;">&#40;</span>
+    datum_a_cas <span style="color: #999900; font-weight: bold;">DATETIME</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat datumy s časy</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> datumy_s_casy <span style="color: #FF00FF;">&#40;</span>datum_a_cas<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-14 20:15:00'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vložení datumu s časem do tabulky</span></pre>
+                </div>
+                <h3 class="heading-tertiary">YEAR</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává rok ve formě čtyř číslic.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> roky
+<span style="color: #FF00FF;">&#40;</span>
+    rok <span style="color: #9900FF; font-weight: bold;">YEAR</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat roky</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> roky <span style="color: #FF00FF;">&#40;</span>rok<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vložení roku do tabulky</span></pre>
+                </div>
+                <h3 class="heading-tertiary">TIMESTAMP</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento datový typ uchovává datum s časem od '1970-01-01 00:00:01' do '2038-01-09 03:14:07'. V databázi zabere jen 4 bajty oproti DATETIME, který zabere 8 bajtů.</p>
+                <div class="code-box">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> datumy_s_casy
+<span style="color: #FF00FF;">&#40;</span>
+    datum_a_cas <span style="color: #999900; font-weight: bold;">TIMESTAMP</span> <span style="color: #808080; font-style: italic;"># tento sloupec bude uchovávat datumy s časy</span>
+<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> datumy_s_casy <span style="color: #FF00FF;">&#40;</span>datum_a_cas<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-14 20:15:00'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vložení datumu s časem do tabulky</span></pre>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+</body>
+</html>

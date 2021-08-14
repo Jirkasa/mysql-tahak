@@ -72,6 +72,15 @@ body {
 .paragraph--right-padding {
   padding-right: 10rem;
 }
+.anchor:link,
+.anchor:visited {
+  color: #fb6470;
+  text-decoration: none;
+  font-weight: 700;
+}
+.anchor:hover {
+  color: #fc969e;
+}
 .u-margin-bottom-tiny {
   margin-bottom: 0.5rem;
 }
