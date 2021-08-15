@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>MySQL Tahák - CRUD operace</title>
+</head>
+<body>
+    <header class="header">
+        <a href="../" class="header__home-link">MySQL Tahák</a>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side"></nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">CRUD operace</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato stránka obsahuje informace o CRUD operacích (CREATE READ UPDATE DELETE). Nachází se zde příkaz INSERT, SELECT, UPDATE a DELETE.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">INSERT</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Příkaz INSERT slouží ke vložení nové položky do tabulky. Tento příkaz použijeme tak, že napíšeme text 'INSERT INTO' a za něj jméno tabulky do které chceme novou položku vložit. Poté do závorek napíšeme do kterých sloupců tabulky budeme chtít vkládat, za závorky napíšeme text 'VALUES' a do dalších závorek napíšeme hodnoty, které chceme do sloupců vložit. Lépe příkaz INSERT pochopíte z následující ukázky než z textu.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> users <span style="color: #FF00FF;">&#40;</span>username<span style="color: #000033;">,</span> email<span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># do tabulky users vložíme novou položku a nastavíme jí hodnoty ve sloupcích username a email</span>
+<span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Pavel'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'pavel123@gmail.com'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># do sloupce username se uloží hodnota 'Pavel' a do sloupce email se uloží hodnota 'pavel123@gmail.com'</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme do tabulky vložit zároveň více hodnot, tak můžeme na konec příkazu INSERT přidat další hodnoty v závorkách a oddělit je čárkou.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> users <span style="color: #FF00FF;">&#40;</span>username<span style="color: #000033;">,</span> email<span style="color: #FF00FF;">&#41;</span>
+<span style="color: #990099; font-weight: bold;">VALUES</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Pavel'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'pavel123@gmail.com'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># první položka</span>
+       <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Marek'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'marek456@gmail.com'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">,</span> <span style="color: #808080; font-style: italic;"># druhá položka</span>
+       <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Mirek'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'mirek789@gmail.com'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># třetí položka</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Existuje ještě druhá verze příkazu INSERT INTO. Ukazuje ji následující ukázka.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">INSERT</span> <span style="color: #990099; font-weight: bold;">INTO</span> users
+<span style="color: #990099; font-weight: bold;">SET</span> username <span style="color: #CC0099;">=</span> <span style="color: #008000;">'Pavel'</span><span style="color: #000033;">,</span> email <span style="color: #CC0099;">=</span> <span style="color: #008000;">'pavel123@gmail.com'</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">SELECT</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Příkaz SELECT slouží k získání dat z tabulky. Tento příkaz použijeme tak, že napíšeme text 'SELECT' a za něj co za sloupce chceme získat nebo znak * pokud chceme získat všechno. Dále napíšeme text 'FROM' a jméno tabulky ze které chceme data získat.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí všechny hodnoty sloupců všech položek v tabulce</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Názvy sloupců ze kterých chceme získat hodnoty oddělujeme čárkou pokud jich chceme získat víc.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> username<span style="color: #000033;">,</span> email <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí všechny hodnoty sloupců username a email všech položek v tabulce</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Získání položek podle podmínky</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme z tabulky získat jen položky, které projdou nějakou podmínkou, tak můžeme za příkaz SELECT připsat slovo WHERE a podmínku, která musí platit aby se položka vrátila.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099;">=</span> <span style="color: #008000;">'Marek'</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí všechny položky, které mají ve sloupci username hodnotu 'Marek'</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Změnění jména získaného sloupce</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Změnit jméno pod kterém se nám sloupec z tabulky vrátí můžeme zapsáním slova 'AS' a jména za sloupec, který chceme získat. Uvozovky používat nemusíme pokud naše jméno neobsahuje mezery.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> username <span style="color: #990099; font-weight: bold;">AS</span> uzivatel <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># získání hodnot ze sloupce username pod jménem uzivatel</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Získání položek, které nejsou stejné</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme zamezit tomu abychom z tabulky získali položky, které mají stejné hodnoty, tak můžeme do příkazu SELECT připsat slovo DISTINCT.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #990099; font-weight: bold;">DISTINCT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Seřazení získaných položek</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud si chceme položky při jejich získání z tabulky nějak seřadit, tak to můžeme provést připsáním textu 'ORDER BY' a sloupce podle kterého chceme položky seřadit.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">ORDER BY</span> age<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># seřazení získaných položek podle sloupce age</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme položky seřadit podle více sloupců, tak můžeme, stačí je oddělit čárkou.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">ORDER BY</span> age<span style="color: #000033;">,</span> username<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># seřazení získaných položek podle sloupce age a potom ještě podle sloupce username</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Defaultně se položky řadí vzestupně, pokud bychom je chtěli seřadit sestupně, tak musíme připsat slovo DESC.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">ORDER BY</span> age<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># seřazení vzestupně</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">ORDER BY</span> age <span style="color: #990099; font-weight: bold;">ASC</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># seřazení vzestupně</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">ORDER BY</span> age <span style="color: #990099; font-weight: bold;">DESC</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># seřazení sestupně</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Limitování získaných položek</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme limitovat počet položek, které získáme z tabulky, tak můžeme k příkazu SELECT připsat slovo LIMIT s maximálním počtem položek, které můžeme z tabulky získat.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">LIMIT</span> <span style="color: #008080;">3</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># získání jen tří položek z tabulky</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud bychom chtěli nějaké řádky v tabulce přeskočit, tak můžeme LIMIT napsat se dvěma čárkou oddělenými čísly. První číslo říká od jakého řádku chceme položky začít získávat a druhé číslo říká kolik položek z tabulky chceme maximálně získat. Řádky se číslují od nuly, takže první řádek má číslo nula.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">LIMIT</span> <span style="color: #008080;">1</span><span style="color: #000033;">,</span><span style="color: #008080;">3</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># získání tří položek od druhého řádku tabulky</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Spočítání získaných položek</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce COUNT můžeme spočítat získané položky. Pokud tuto funkci použijeme, tak se nám řádky sjednotí dohromady, takže získáme jen jednu položku (výsledek).</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">COUNT</span><span style="color: #FF00FF;">&#40;</span><span style="color: #CC0099;">*</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> pocet_polozek <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Součet všech získaných hodnot ve sloupci</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce SUM můžeme vypočítat součet všech získaných hodnot v nějakém sloupci. Pokud tuto funkci použijeme, tak se nám řádky sjednotí dohromady, takže získáme jen jednu položku (výsledek).</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">SUM</span><span style="color: #FF00FF;">&#40;</span>age<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> soucet <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Průměr všech získaných hodnot ve sloupci</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce AVG můžeme vypočítat průměr všech získáných hodnot v nějakém sloupci. Pokud tuto funkci použijeme, tak se nám řádky sjednotí dohromady, takže získáme jen jednu položku (výsledek).</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">AVG</span><span style="color: #FF00FF;">&#40;</span>age<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> prumer <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Zaokrouhlení získaných hodnot ve sloupci</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud máme v nějakém sloupci při získávání položek z tabulky čísla s desetinnou částí, tak je můžeme zaokrouhlit pomocí funkce ROUND.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> name<span style="color: #000033;">,</span> <span style="color: #000099;">ROUND</span><span style="color: #FF00FF;">&#40;</span>price<span style="color: #000033;">,</span> <span style="color: #008080;">2</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> price <span style="color: #990099; font-weight: bold;">FROM</span> products<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># získání hodnot z tabulky products a zaokrouhlení čísel ve sloupci price na dvě desetinná místa</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Získání položky s nejmenší hodnotou ve sloupci</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme z tabulky získat položku, která má v nějakém sloupci nejmenší hodnotu, tak můžeme použít funkci MIN. Tuto funkci bychom mohli napsat přímo k seznamu sloupců, které chceme z tabulky získat. To bychom ale získali jen nejmenší hodnotu a ne položku. Pokud chceme získat celou položku, která má v nějakém sloupci nejmenší hodnotu, tak funkci MIN musíme použít se slovem WHERE, kde vytvoříme poddotaz (dotaz uvnitř dotazu). Ale spuštění dvou dotazů namísto jednoho je pomalejší, takže je lepší položky seřadit a použít slovo LIMIT.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #808080; font-style: italic;"># první způsob</span>
+<span style="color: #990099; font-weight: bold;">WHERE</span> age <span style="color: #CC0099;">=</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">MIN</span><span style="color: #FF00FF;">&#40;</span>age<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># spouští se dva dotazy</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #808080; font-style: italic;"># druhý způsob</span>
+<span style="color: #990099; font-weight: bold;">ORDER BY</span> age
+<span style="color: #990099; font-weight: bold;">LIMIT</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># spouští se jen jeden dotaz (mělo by to být rychlejší)</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Získání položky s největší hodnotou ve sloupci</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme z tabulky získat položku, která má v nějakém sloupci největší hodnotu, tak můžeme použít funkci MAX. Tuto funkci bychom mohli napsat přímo k seznamu sloupců, které chceme z tabulky získat. To bychom ale získali jen největší hodnotu a ne položku. Pokud chceme získat celou položku, která má v nějakém sloupci největší hodnotu, tak funkci MAX musíme použít se slovem WHERE, kde vytvoříme poddotaz (dotaz uvnitř dotazu). Ale spuštění dvou dotazů namísto jednoho je pomalejší, takže je lepší položky seřadit a použít slovo LIMIT.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #808080; font-style: italic;"># první způsob</span>
+<span style="color: #990099; font-weight: bold;">WHERE</span> age <span style="color: #CC0099;">=</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">MAX</span><span style="color: #FF00FF;">&#40;</span>age<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># spouští se dva dotazy</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #808080; font-style: italic;"># druhý způsob</span>
+<span style="color: #990099; font-weight: bold;">ORDER BY</span> age <span style="color: #990099; font-weight: bold;">DESC</span>
+<span style="color: #990099; font-weight: bold;">LIMIT</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># spouští se jen jeden dotaz (mělo by to být rychlejší)</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Nastavení hodnoty když je ve sloupci NULL</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud nechceme mít v nějakém sloupci při získávání položek z tabulky NULL, tak můžeme použít funkci IFNULL. Tato funkce nám umožňuje nastavit nějakou hodnotu, když se ve sloupci objeví NULL.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #009900;">IFNULL</span><span style="color: #FF00FF;">&#40;</span>username<span style="color: #000033;">,</span> <span style="color: #008000;">'nepojmenovany'</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> username <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># pokud bude ve sloupci username NULL, tak se nastaví hodnota 'nepojmenovany'</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Seskupení řádků - GROUP BY</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí GROUP BY můžeme seskupit získané řádky podle nějakého sloupce do skupin. Když potom zavoláme funkce jako je např. COUNT, tak se řádky spočítají jen ve svých skupinách. Takže získáme nějaký výsledek v každé skupině.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující kód nám pro každý věk (age) spočítá, kolik máme v tabulce uživatelů</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> age<span style="color: #000033;">,</span> <span style="color: #000099;">COUNT</span><span style="color: #FF00FF;">&#40;</span><span style="color: #CC0099;">*</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> pocet <span style="color: #808080; font-style: italic;"># funkce COUNT se provádí v každé skupině</span>
+<span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">GROUP BY</span> age<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># seskupíme řádky podle sloupce age</span></pre>
+                </div>
+                <h3 class="heading-tertiary">Podmínka pro přidání řádku do skupiny - HAVING</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Zapsáním HAVING za GROUP BY můžeme specifikovat podmínku, kterou musí položka (řádek) splnit aby se zařadila do nějaké skupiny.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující kód nám spočítá pro každý věk (age), který je větší nebo rovno 18 počet uživatelů</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> age<span style="color: #000033;">,</span> <span style="color: #000099;">COUNT</span><span style="color: #FF00FF;">&#40;</span><span style="color: #CC0099;">*</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> pocet
+<span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">GROUP BY</span> age
+<span style="color: #990099; font-weight: bold;">HAVING</span> age <span style="color: #CC0099;">&gt;=</span> <span style="color: #008080;">18</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># jen řádky, které mají hodnotu ve sloupci age větší nebo rovnou 18 se zařadí do skupiny</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">UPDATE</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Příkaz UPDATE slouží ke změnění položek v tabulce. Tento příkaz použijeme tak, že napíšeme text 'UPDATE', jméno tabulky, text 'SET' a sloupec, kterému přiřadíme novou hodnotu pomocí znaku '='. Takto ale změníme všechny položky v tabulce, pokud bychom chtěli změnit jen nějaké, tak musíme použít WHERE.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">UPDATE</span> users <span style="color: #990099; font-weight: bold;">SET</span> score <span style="color: #CC0099;">=</span> <span style="color: #008080;">0</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># změnění hodnoty sloupce score u všech položek na hodnotu 0</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme v tabulce změnit jen nějaké položky, tak musíme za příkaz UPDATE připsat slovo WHERE a podmínku, kterou položka musí splnit aby se mohla změnit.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">UPDATE</span> users <span style="color: #990099; font-weight: bold;">SET</span> score <span style="color: #CC0099;">=</span> <span style="color: #008080;">0</span>
+<span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099;">=</span> <span style="color: #008000;">'Vincent'</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># jen položka, která má ve sloupci username uloženou hodnotu 'Vincent' se změní</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud bychom chtěli měnit více sloupců, tak je jednoduše oddělíme čárkou.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">UPDATE</span> users <span style="color: #990099; font-weight: bold;">SET</span> age <span style="color: #CC0099;">=</span> <span style="color: #008080;">30</span><span style="color: #000033;">,</span> email <span style="color: #CC0099;">=</span> <span style="color: #008000;">'vinc321@yahoo.com'</span>
+<span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099;">=</span> <span style="color: #008000;">'Vincent'</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">DELETE</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Příkaz DELETE slouží ke smazání položek z tabulky. Pokud chceme smazat všechny položky z tabulky, tak napíšeme text 'DELETE FROM' a jméno tabulky, ze které chceme položky smazat.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">DELETE</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># smazání všech položek v tabulce users</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme smazat jen nějaké položky v tabulce, tak za příkaz DELETE napíšeme slovo WHERE a podmínku, která se musí splnit aby se položka smazala.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">DELETE</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">WHERE</span> age <span style="color: #CC0099;">&lt;</span> <span style="color: #008080;">6</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># smazání položek, které splní podmínku</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Poddotazy</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme, tak si můžeme vytvořit dotaz uvnitř dotazu. Uděláme to zapsáním dotazu do závorky jak ukazuje následující ukázka.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">WHERE</span> age <span style="color: #CC0099;">=</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">MAX</span><span style="color: #FF00FF;">&#40;</span>age<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># dotaz uvnitř dotazu</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Výpis varování</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Někdy se nám může stát, že nám MySQL například při vložení položky do tabulky napíše, že pro nás má nějaké varování. Děje se to například když se při vložení položky do tabulky ořízne řetězec aby se vešel do sloupce. Toto varování můžeme zobrazit pomocí příkazu 'SHOW WARNINGS'.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># může se nám stát, že nám MySQL řekne, že pro nás má nějaké varování:</span>
+<span style="color: #808080; font-style: italic;"># Query OK, 1 row affected, 1 warning (0.01 sec) &lt;- například</span>
+<span style="color: #990099; font-weight: bold;">SHOW</span> <span style="color: #990099; font-weight: bold;">WARNINGS</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># tímto příkazem si varování zobrazíme</span></pre>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+</body>
+</html>
