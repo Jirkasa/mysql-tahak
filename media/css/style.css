@@ -137,12 +137,33 @@ body {
 .code-box {
   font-size: 1.6rem;
   background-color: #e0e0e0;
-  border: 3px solid #3f3d3e;
+  border: 3px solid #fb6470;
   border-radius: 4px;
   color: #3e3e3e;
   padding: 0.5rem;
   white-space: nowrap;
   overflow-x: auto;
+}
+.table {
+  font-size: 1.7rem;
+  border: 2px solid #fb6470;
+  color: #3e3e3e;
+  border-collapse: collapse;
+}
+.table td,
+.table th {
+  border: 2px solid #fb6470;
+  padding: 0.5rem;
+}
+.table td:first-child,
+.table th:first-child {
+  text-align: center;
+}
+.table th {
+  background-color: #fec7cc;
+}
+.table td {
+  background-color: #ffeff0;
 }
 .home-welcome-section {
   height: 100vh;

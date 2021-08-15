@@ -3,6 +3,8 @@ V tomto souboru si rozepíšu části webových stránek:
 DATABÁZE A TABULKY, DATOVÉ TYPY, CRUD OPERACE, PRIMARY A FOREIGN KEY, STRING FUNKCE, DATUMOVÉ FUNKCE, LOGICKÉ OPERÁTORY, VZTAHY MEZI TABULKAMI, TRIGGERY
 - zatím to teda vypadá takto, možná to později ještě změním
 
+- neslouží to jako tutoriál - nemá to učit - má to připomínat
+
 
 DATABÁZE A TABULKY - ZATÍM HOTOVO
     SHOW DATABASES - HOTOVO
@@ -20,7 +22,7 @@ DATABÁZE A TABULKY - ZATÍM HOTOVO
     DESC table; - HOTOVO
         DESCRIBE - HOTOVO
 
-DATOVÉ TYPY
+DATOVÉ TYPY - HOTOVO
 
 DATUMOVÉ FUNKCE
     CURDATE
@@ -29,33 +31,32 @@ DATUMOVÉ FUNKCE
     DATEDIFF
     DATE_ADD, DATE_SUB
 
-CRUD OPERACE
-    INSERT
-        INSERT INTO table ...
-        - i ta druhá verze pokud je
+CRUD OPERACE - ZATÍM HOTOVO
+    INSERT - HOTOVO
+        INSERT INTO table ... - HOTOVO
+        - i ta druhá verze pokud je - HOTOVO
     SELECT
-        AS
-        DISTINCT
-        ORDER BY
-            ASC, DESC
-        LIMIT
-        LIKE
-        COUNT
-        SUM
-        AVG
-        ROUND
-        IF funkce
-        MIN MAX
-        IFNULL
-        GROUP BY
-            můžeme tam použít aliasy, které jsme si určili při SELECT
-            HAVING
-        WHERE - tady ty věci se dají použít i u jiných operací, nebudu to dávat přímo k select ale až někam dole možná
-    UPDATE
-    DELETE
-    - subquery
-    SHOW WARNING;
-    spouštění queries ze souboru: source soubor.sql;
+        AS - HOTOVO
+        DISTINCT - HOTOVO
+        ORDER BY - HOTOVO
+            ASC, DESC - HOTOVO
+        LIMIT - HOTOVO
+        LIKE - toto napíšu do LOGICKÉ OPERÁTORY - HOTOVO
+        COUNT - HOTOVO
+        SUM - HOTOVO
+        AVG - HOTOVO
+        ROUND - HOTOVO
+        IF funkce - možná až do LOGICKÉ OPERÁTORY - HOTOVO
+        MIN MAX - HOTOVO
+        IFNULL - HOTOVO
+        GROUP BY - HOTOVO
+            HAVING - HOTOVO
+        WHERE - tady ty věci se dají použít i u jiných operací, nebudu to dávat přímo k select ale až někam dole možná - HOTOVO
+    UPDATE - HOTOVO
+    DELETE - HOTOVO
+    - subquery - HOTOVO
+    SHOW WARNING; - HOTOVO
+    spouštění kódu ze souboru: source soubor.sql; - to dám asi do DATABÁZE A TABULKY - ale taky to tam úplně nepatří, tak to tam musím napsat že to tam úplně nepatří - HOTOVO
 
 PRIMARY A FOREIGN KEY
         AUTO_INCREMENT
@@ -74,17 +75,20 @@ STRING FUNCTIONS
     LOWER
 
 LOGICKÉ OPERÁTORY
-    - operátory
-    CAST
-    BETWEEN
-    NOT BETWEEN
-    LIKE
-    NOT LIKE
-    IN
-    NOT IN
-    CASE
-        WHEN THEN ...
-    IS NULL
+    - operátory - HOTOVO
+    CAST - HOTOVO
+    BETWEEN - HOTOVO
+    NOT BETWEEN - HOTOVO
+    LIKE - HOTOVO
+    NOT LIKE - HOTOVO
+    IN - HOTOVO
+    NOT IN - HOTOVO
+    CASE - HOTOVO
+        WHEN THEN ... - HOTOVO
+    IS NULL - HOTOVO
+
+    https://dev.mysql.com/doc/refman/8.0/en/comparison-operators.html
+    https://dev.mysql.com/doc/refman/8.0/en/logical-operators.html
 
 VZTAHY MEZI TABULKAMI
     ONE TO ONE

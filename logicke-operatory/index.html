@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>MySQL Tahák - Logické Operátory</title>
+</head>
+<body>
+    <header class="header">
+        <a href="../" class="header__home-link">MySQL Tahák</a>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side"></nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">Logické Operátory</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato část je sice pojmenovaná jako logické operátory, ale týká se spíš logiky celkově, protože tu nejsou jen samotné logické operátory. V ...</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Porovnávací operátory</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">V MySQL máme k dispozici k porovnávání hodnot pár porovnávacích operátorů. Ukazuje je následující tabulka.</p>
+                <table class="table u-margin-bottom-small">
+                    <thead>
+                        <tr>
+                            <th><i class="icofont-tag"></i></th>
+                            <th>Popis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&gt;</td>
+                            <td>větší než</td>
+                        </tr>
+                        <tr>
+                            <td>&gt;=</td>
+                            <td>větší nebo rovná se</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;</td>
+                            <td>menší než</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;=</td>
+                            <td>menší nebo rovná se</td>
+                        </tr>
+                        <tr>
+                            <td>=</td>
+                            <td>rovná se</td>
+                        </tr>
+                        <tr>
+                            <td>!=</td>
+                            <td>nerovná se</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;=&gt;</td>
+                            <td>NULL-safe rovná se (pokud porovnáme NULL hodnoty a budou se rovnat, tak se vrátí 1, ne NULL)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="paragraph u-margin-bottom-small">V následující ukázce si můžete některé porovnávací operátory prohlédnout v kódu.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">WHERE</span> age <span style="color: #CC0099;">&gt;</span> <span style="color: #008080;">18</span><span style="color: #000033;">;</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099;">=</span> <span style="color: #008000;">'Adam'</span><span style="color: #000033;">;</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">0</span> <span style="color: #CC0099;">&gt;</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0 (nepravda)</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span> <span style="color: #CC0099;">=</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí NULL</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span> <span style="color: #CC0099;">&lt;=&gt;</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Logické operátory</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">V MySQL máme k dispozici logické operátory, které můžeme použít k tvorbě komplikovanějších podmínek. Ukazuje je následující tabulka.</p>
+                <table class="table u-margin-bottom-small">
+                    <thead>
+                        <tr>
+                            <th><i class="icofont-tag"></i></th>
+                            <th>Popis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AND, &&</td>
+                            <td>logické A (a zároveň)</td>
+                        </tr>
+                        <tr>
+                            <td>NOT, !</td>
+                            <td>negace</td>
+                        </tr>
+                        <tr>
+                            <td>OR, ||</td>
+                            <td>logické nebo</td>
+                        </tr>
+                        <tr>
+                            <td>XOR</td>
+                            <td>exkluzivní disjunkce</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Až na XOR jsou myslím všechny operátory jasné. Operátor XOR vrátí NULL, když je jakýkoliv z operandů NULL. Pokud žádný z operandů není NULL, tak se vrátí 1 (pravda) pokud je lichý počet operandů nenulový, jinak se vrátí 0 (nepravda).</p>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">V následující ukázce si můžete některé logické operátory prohlédnout v kódu.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users <span style="color: #990099; font-weight: bold;">WHERE</span> age <span style="color: #CC0099;">&gt;</span> <span style="color: #008080;">6</span> <span style="color: #CC0099; font-weight: bold;">AND</span> age <span style="color: #CC0099;">&lt;</span> <span style="color: #008080;">18</span><span style="color: #000033;">;</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">2</span> <span style="color: #CC0099;">&gt;</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">OR</span> <span style="color: #008080;">3</span> <span style="color: #CC0099;">&lt;</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #008080;">0</span> <span style="color: #CC0099;">&gt;</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">XOR</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">XOR</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">XOR</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">BETWEEN</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud potřebujeme vytvořit podmínku ve které se ptáme jestli je nějaká hodnota uvnitř nějakého intervalu, tak k tomu můžeme použít BETWEEN operátor. Použijeme jej tak že za hodnotu na kterou ho chceme aplikovat napíšeme slovo 'BETWEEN', hodnotu od které interval začíná, slovo 'AND' a hodnotu kde interval končí.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vrátí všechny položky, které mají ve sloupci released_year hodnotu, která je uvnitř intervalu od 2004 do 2015</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> books
+<span style="color: #990099; font-weight: bold;">WHERE</span> released_year <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2004</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">2015</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">3</span> <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">5</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">5</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0 (nepravda)</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud se naopak chceme zeptat jestli se nějaká hodnota nenachází v nějakém intervalu, tak před BETWEEN můžeme připsat slovo NOT.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vrátí všechny položky, které mají ve sloupci released_year hodnotu, která není uvnitř intervalu od 2004 do 2015</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> books
+<span style="color: #990099; font-weight: bold;">WHERE</span> released_year <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2004</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">2015</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">3</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">5</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0 (nepravda)</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">5</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">IN</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud se chceme zeptat jestli se nějaká hodnota rovná nějaké hodnotě ze seznamu hodnot, tak k tomu můžeme použít operátor IN. Použijeme jej tak, že za hodnotu na kterou ho chceme aplikovat napíšeme slovo 'IN' a za něj do závorek vypíšeme seznam hodnot.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vrátí jen položky, které mají ve sloupci username hodnotu 'Pavel', 'Marek' nebo 'Mirek'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Pavel'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'Marek'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'Mirek'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">3</span> <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">4</span><span style="color: #000033;">,</span> <span style="color: #008080;">7</span><span style="color: #000033;">,</span> <span style="color: #008080;">9</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0 (nepravda)</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">7</span> <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">4</span><span style="color: #000033;">,</span> <span style="color: #008080;">7</span><span style="color: #000033;">,</span> <span style="color: #008080;">9</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud se naopak chceme zeptat jestli se nějaká hodnota nerovná žádné hodnotě ze seznamu hodnot, tak před IN můžeme připsat slovo NOT.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vrátí jen položky, které nemají ve sloupci username hodnotu 'Pavel', 'Marek' nebo 'Mirek'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Pavel'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'Marek'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'Mirek'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">3</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">4</span><span style="color: #000033;">,</span> <span style="color: #008080;">7</span><span style="color: #000033;">,</span> <span style="color: #008080;">9</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">7</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">4</span><span style="color: #000033;">,</span> <span style="color: #008080;">7</span><span style="color: #000033;">,</span> <span style="color: #008080;">9</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0 (nepravda)</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">LIKE</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí operátoru LIKE se můžeme zeptat jestli řetězec splňuje nějaký vzor. Tento příkaz použijeme tak, že za hodnotu na kterou jej chceme aplikovat napíšeme slovo 'LIKE' a řetězec, který představuje vzor, který má hodnota splnit. Tento řetězec může obsahovat znaky procenta nebo podtržítka. Co tyto znaky představují popisuje následující tabulka. Na malá a velká písmena se nehledí.</p>
+                <table class="table u-margin-bottom-small">
+                    <thead>
+                        <tr>
+                            <th><i class="icofont-tag"></i></th>
+                            <th>Popis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>%</td>
+                            <td>libovolný počet jakýchkoliv znaků</td>
+                        </tr>
+                        <tr>
+                            <td>_</td>
+                            <td>libovolný znak</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud bychom znaky procenta nebo podtržítka chtěli v našem vzoru použít jako normální znaky, tak je musíme escapnout: \%, \_.</p>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Následující ukázka použití operátoru LIKE ukazuje.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vybere všechny položky, které mají ve sloupci username řetězec začínající na 'Pa'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099; font-weight: bold;">LIKE</span> <span style="color: #008000;">'Pa<span style="color: #008080; font-weight: bold;">%</span>'</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># řetězec musí začínat znaky 'Pa'</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud bychom naopak chtěli zjistit jestli řetězec nesplňuje nějaký vzor, tak před LIKE můžeme připsat slovo NOT.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vybere všechny položky, které mají ve sloupci username řetězec, který nezačíná na 'Pa'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #CC0099; font-weight: bold;">LIKE</span> <span style="color: #008000;">'Pa<span style="color: #008080; font-weight: bold;">%</span>'</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># řetězec nesmí začínat znaky 'Pa'</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">CASE</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí CASE a pár dalších slov můžeme nastavovat hodnoty podle podmínek podobně jako v programovacích jazycích pomocí if, else if a else. Nevím jak bych to popsal v textu, tady je ukázka podle které to pravděpodobně pochopíte lépe:</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> title<span style="color: #000033;">,</span> released_year<span style="color: #000033;">,</span>
+    <span style="color: #009900;">CASE</span> <span style="color: #808080; font-style: italic;"># výběr hodnoty podle podmínek</span>
+        <span style="color: #009900;">WHEN</span> released_year <span style="color: #CC0099;">&gt;=</span> <span style="color: #008080;">2000</span> <span style="color: #009900;">THEN</span> <span style="color: #008000;">'Modern Lit'</span> <span style="color: #808080; font-style: italic;"># pokud je hodnota ve sloupci released_year větší nebo rovna 2000, nastaví se hodnota 'Modern Lit'</span>
+        <span style="color: #009900;">WHEN</span> released_year <span style="color: #CC0099;">&lt;=</span> <span style="color: #008080;">1800</span> <span style="color: #009900;">THEN</span> <span style="color: #008000;">'Classic Lit'</span> <span style="color: #808080; font-style: italic;"># jinak pokud je hodnota ve sloupci released_year menší nebo rovna 1800, nastaví se hodnota 'Classic Lit'</span>
+        <span style="color: #009900;">ELSE</span> <span style="color: #008000;">'20th Century Lit'</span> <span style="color: #808080; font-style: italic;"># jinak se nastaví hodnota '20th Century Lit'</span>
+    <span style="color: #009900;">END</span> <span style="color: #990099; font-weight: bold;">AS</span> genre <span style="color: #808080; font-style: italic;"># hodnoty se uloží pod sloupec genre</span>
+<span style="color: #990099; font-weight: bold;">FROM</span> books<span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">IS NULL</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Zapsáním 'IS NULL' za hodnotu můžeme zjistit jestli je NULL nebo ne.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
+<span style="color: #990099; font-weight: bold;">WHERE</span> score <span style="color: #CC0099; font-weight: bold;">IS</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí jen položky, které mají ve sloupci score NULL</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Funkce IF</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce IF můžeme nastavit jednu ze dvou hodnot podle předané podmínky. Jako první parametr funkci IF předáváme podmínku. Jako druhý parametr předáváme hodnotu, která se nastaví když se podmínka splní a jako třetí parametr předáváme hodnotu, která se nastaví když se podmínka nesplní.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> username<span style="color: #000033;">,</span> score<span style="color: #000033;">,</span> <span style="color: #009900;">IF</span><span style="color: #FF00FF;">&#40;</span>score <span style="color: #CC0099;">&gt;</span> <span style="color: #008080;">50</span><span style="color: #000033;">,</span> <span style="color: #008000;">'uspěl'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'neuspěl'</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> vysledek
+<span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Funkce CAST</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Občas můžeme chtít hodnoty převést na jiný datový typ než s nimi vytvoříme například nějakou podmínku. K tomu nám slouží funkce CAST. Do této funkce napíšeme hodnotu kterou chceme převést, text 'AS' a datový typ na který chceme hodnotu převést.</p>
+                <div class="code-box">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující funkce převede DATE na DATETIME</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">CAST</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-15'</span> <span style="color: #990099; font-weight: bold;">AS</span> <span style="color: #999900; font-weight: bold;">DATETIME</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># funkce vrátí tuto hodnotu: '2021-08-15 00:00:00'</span></pre>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+</body>
+</html>

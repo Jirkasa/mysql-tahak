@@ -1,0 +1,24 @@
+.table {
+    font-size: 1.7rem;
+    border: 2px solid @colors[pink];
+    color: @colors[third-grey];
+    border-collapse: collapse;
+
+    td, th {
+        border: 2px solid @colors[pink];
+
+        padding: .5rem;
+
+        &:first-child {
+            text-align: center;
+        }
+    }
+
+    th {
+        background-color: lighten(@colors[pink], 20%);
+    }
+
+    td {
+        background-color: lighten(@colors[pink], 28%);
+    }
+}

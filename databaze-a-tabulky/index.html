@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
 
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
     <link rel="stylesheet" href="../media/css/style.css">
 
     <title>MySQL Tahák - Databáze a Tabulky</title>
@@ -104,8 +105,13 @@
                 </div>
                 <h2 class="heading-secondary u-margin-bottom-tiny">Smazání tabulky</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Smazat tabulku můžeme pomocí příkazu DROP TABLE.</p>
-                <div class="code-box">
+                <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">DROP</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># smazání tabulky, která se jmenuje users</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Spouštění kódu ze souboru</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Možná to sem úplně nepatří, ale ještě jsem se sem rozhodl zařadit příkaz, pomocí kterého můžeme spouštět kód ze souboru. Příkaz pro spuštění kódu ze souboru se jmenuje SOURCE. Použijeme jej tak že za něj napíšeme cestu k souboru. Soubor musí mít koncovku sql.</p>
+                <div class="code-box">
+                    <pre class="mysql" style="font-family:monospace;">source D:\codes\my_file.sql <span style="color: #808080; font-style: italic;"># spustí kód ze souboru (středník na konec nepřidáváme)</span></pre>
                 </div>
             </main>
         </div>
