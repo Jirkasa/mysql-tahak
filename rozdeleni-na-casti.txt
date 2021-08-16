@@ -66,15 +66,15 @@ PRIMARY A FOREIGN KEY - ZATÍM HOTOVO
         ON DELETE CASCADE - HOTOVO
         primary key jako více hodnot - HOTOVO
 
-STRING FUNCTIONS
+STRING FUNCTIONS - ZATÍM HOTOVO
     - asi jen nějaké, všechny ne, na ostatní přidám odkaz
-    CONCAT
-    CONCAT_WS
-    SUBSTRING
-    REPLACE
-    CHAR_LENGTH
-    UPPER
-    LOWER
+    CONCAT - HOTOVO
+    CONCAT_WS - HOTOVO
+    SUBSTRING - HOTOVO
+    REPLACE - HOTOVO
+    CHAR_LENGTH - HOTOVO
+    UPPER - HOTOVO
+    LOWER - HOTOVO
 
 LOGICKÉ OPERÁTORY - ZATÍM HOTOVO
     - operátory - HOTOVO

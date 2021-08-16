@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>MySQL Tahák - Řetězcové funkce</title>
+</head>
+<body>
+    <header class="header">
+        <a href="../" class="header__home-link">MySQL Tahák</a>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side"></nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">Řetězcové funkce</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Na této stránce najdete pár funkcí týkajících se řetězců. Napsal jsem jich tu jen pár, na ostatní se můžete podívat třeba v <a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html" target="_blank" class="anchor">dokumentaci</a>.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">CONCAT</h2>
+                <p class="paragraph paragraph--right-paddding u-margin-bottom-small">Funkce CONCAT nám umožňuje spojit hodnoty do jednoho řetězce. Jako parametr jí předáváme hodnoty, které chceme spojit.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">CONCAT</span><span style="color: #FF00FF;">&#40;</span>first_name<span style="color: #000033;">,</span> <span style="color: #008000;">' '</span><span style="color: #000033;">,</span> last_name<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> full_name
+<span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span>
+&nbsp;
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">CONCAT</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'My'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'SQL'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># tento příkaz vrátí řetězec 'MySQL'</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">CONCAT_WS</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Funkce CONCAT_WS nám umožňuje spojit hodnoty do jednoho řetězce a mezi hodnoty zároveň vložit nějaký znak. Jako parametr jí předáváme znak, který se vloží mezi hodnoty a hodnoty, které chceme spojit.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">CONCAT_WS</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'-'</span><span style="color: #000033;">,</span> <span style="color: #008080;">2021</span><span style="color: #000033;">,</span> <span style="color: #008080;">8</span><span style="color: #000033;">,</span> <span style="color: #008080;">16</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># tento příkaz vrátí řetězec '2021-8-16'</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">SUBSTRING</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce SUBSTRING můžeme získat část řetězce. Jako první parametr předáváme řetězec ze kterého chceme získat jeho část. Jako další parametry můžeme předat jedno nebo dvě čísla. Pokud předáme jen jedno číslo, tak se vezme část řetězce od předaného indexu po konec řetězce. Pokud předáme záporné číslo, tak se index vezme od konce. Pokud předáme dvě čísla, tak se vezme počet znaků předaný ve třetím parametru od indexu předaného v druhém parametru. Indexuje se od jedné, ne od nuly jako ve většině programovacích jazycích.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">SUBSTRING</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Structured Query Language'</span><span style="color: #000033;">,</span> <span style="color: #008080;">12</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 'Query Language'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">SUBSTRING</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Structured Query Language'</span><span style="color: #000033;">,</span> <span style="color: #CC0099;">-</span><span style="color: #008080;">8</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 'Language'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">SUBSTRING</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Structured Query Language'</span><span style="color: #000033;">,</span> <span style="color: #008080;">12</span><span style="color: #000033;">,</span> <span style="color: #008080;">5</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 'Query'</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">REPLACE</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce REPLACE můžeme v řetězci nahradit jeho část jinou částí. Jako první parametr této funkci předáváme řetězec, který chceme měnit. Jako druhý parametr předáváme co chceme v řetězci měnit a jako třetí parametr předáváme čím to chceme měnit.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující funkce vrátí 'Structured Query Language'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">REPLACE</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Hypertext Markup Language'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'Hypertext Markup'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'Structured Query'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">UPPER</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce UPPER můžeme písmena v řetězci předělat na velká písmena.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující funkce vrátí 'STRUCTURED QUERY LANGUAGE'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">UPPER</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'Structured Query Language'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">LOWER</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce LOWER můžeme písmena v řetězci předělat na malá písmena.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující funkce vrátí 'mysql'</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">LOWER</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'MySQL'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary">CHAR_LENGTH</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce CHAR_LENGTH můžeme zjistit počet znaků v řetězci.</p>
+                <div class="code-box">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">CHAR_LENGTH</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'MySQL'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 5</span></pre>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+</body>
+</html>
