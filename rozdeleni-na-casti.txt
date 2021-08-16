@@ -5,6 +5,8 @@ DATABÁZE A TABULKY, DATOVÉ TYPY, CRUD OPERACE, PRIMARY A FOREIGN KEY, STRING F
 
 - neslouží to jako tutoriál - nemá to učit - má to připomínat
 
+zbývá: PRIMARY A FOREIGN KEY, STRING FUNKCE, DATUMOVOVÉ FUNKCE, VZTAHY MEZI TABULKAMI, TRIGGERY
+
 
 DATABÁZE A TABULKY - ZATÍM HOTOVO
     SHOW DATABASES - HOTOVO
@@ -58,11 +60,11 @@ CRUD OPERACE - ZATÍM HOTOVO
     SHOW WARNING; - HOTOVO
     spouštění kódu ze souboru: source soubor.sql; - to dám asi do DATABÁZE A TABULKY - ale taky to tam úplně nepatří, tak to tam musím napsat že to tam úplně nepatří - HOTOVO
 
-PRIMARY A FOREIGN KEY
-        AUTO_INCREMENT
-        NOT NULL
-        ON DELETE CASCADE
-        primary key jako více hodnot
+PRIMARY A FOREIGN KEY - ZATÍM HOTOVO
+        AUTO_INCREMENT - HOTOVO
+        NOT NULL - HOTOVO
+        ON DELETE CASCADE - HOTOVO
+        primary key jako více hodnot - HOTOVO
 
 STRING FUNCTIONS
     - asi jen nějaké, všechny ne, na ostatní přidám odkaz
@@ -74,7 +76,7 @@ STRING FUNCTIONS
     UPPER
     LOWER
 
-LOGICKÉ OPERÁTORY
+LOGICKÉ OPERÁTORY - ZATÍM HOTOVO
     - operátory - HOTOVO
     CAST - HOTOVO
     BETWEEN - HOTOVO
