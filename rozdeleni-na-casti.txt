@@ -5,7 +5,7 @@ DATABÁZE A TABULKY, DATOVÉ TYPY, CRUD OPERACE, PRIMARY A FOREIGN KEY, STRING F
 
 - neslouží to jako tutoriál - nemá to učit - má to připomínat
 
-zbývá: PRIMARY A FOREIGN KEY, STRING FUNKCE, DATUMOVOVÉ FUNKCE, VZTAHY MEZI TABULKAMI, TRIGGERY
+zbývá: STRING FUNKCE, DATUMOVOVÉ FUNKCE, TRIGGERY
 
 
 DATABÁZE A TABULKY - ZATÍM HOTOVO
@@ -92,14 +92,14 @@ LOGICKÉ OPERÁTORY - ZATÍM HOTOVO
     https://dev.mysql.com/doc/refman/8.0/en/comparison-operators.html
     https://dev.mysql.com/doc/refman/8.0/en/logical-operators.html
 
-VZTAHY MEZI TABULKAMI
-    ONE TO ONE
-    ONE TO MANY
-    MANY TO MANY
-    - FOREIGN KEY
-    FROM z více tabulek (CROSS JOIN)
-    INNER JOIN, LEFT JOIN, RIGHT JOIN
-    více JOINŮ za sebou
+VZTAHY MEZI TABULKAMI - ZATÍM HOTOVO
+    ONE TO ONE - HOTOVO
+    ONE TO MANY - HOTOVO
+    MANY TO MANY - HOTOVO
+    - FOREIGN KEY - TO UŽ MÁM
+    FROM z více tabulek (CROSS JOIN) - HOTOVO
+    INNER JOIN, LEFT JOIN, RIGHT JOIN - HOTOVO
+    více JOINŮ za sebou - HOTOVO
 
 TRIGGERY
 

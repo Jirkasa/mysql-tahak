@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>MySQL Tahák - Vztahy mezi tabulkami</title>
+</head>
+<body>
+    <header class="header">
+        <a href="../" class="header__home-link">MySQL Tahák</a>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side"></nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">Vztahy mezi tabulkami</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato stránka popisuje tři typy vztahů mezi tabulkami. Kromě toho jsem tu hlavně ještě zařadil spojování tabulek při získávání jejich položek.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Typy vztahů mezi tabulkami</h2>
+                <h3 class="heading-tertiary">ONE TO ONE</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Vztah ONE TO ONE se moc často nepoužívá. Jde o vztah jen mezi dvěmi položkami. Mohli bychom mít například jednu tabulku pro uživatele a druhou tabulku pro více informací o uživatelích. Každý uživatel v první tabulce by měl jednu položku v tabulce s více informacemi. Možná bychom si ale vystačili jen s jednou tabulkou, proto se vztah ONE TO ONE tolik nepoužívá.</p>
+                <h3 class="heading-tertiary">ONE TO MANY</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Vztah ONE TO MANY se týká jedné položky a více položek odkazujících na ni. Mohli bychom například mít tabulku s knihami a každá kniha by mohla mít více hodnocení z tabulky s hodnoceními knih (mohlo by být více hodnoceních odkazujících na jednu knihu).</p>
+                <h3 class="heading-tertiary">MANY TO MANY</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Vztah MANY TO MANY si můžeme představit například u tabulky s knihami a u tabulky s jejími autory. Kniha může mít více autorů a ti zase mohou mít více knih.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Spojování tabulek při získávání položek z databáze</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Při získávání položek z databáze k sobě můžeme více tabulek spojit dohromady. Existují různé typy spojování tabulek (JOINS). Dále v textu jsou popsány.</p>
+                <h3 class="heading-tertiary">CROSS JOIN</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento typ spojení tabulek je nejjednodušší a pravděpodobně i zbytečný. Cross join se vytvoří když se jen tak pokusíme získat položky z více tabulek najednou. Tabulky se k sobě jen tak připojí bez žádné logiky. Pokud je nějaká tabulka kratší než druhá, tak se bude duplikovat její poslední položka.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">,</span> comments<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># tabulky se spojí dohromady (bez žádné logiky)</span></pre>
+                </div>
+                <h3 class="heading-tertiary">INNER JOIN</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento typ spojení tabulek vznikne, když při získávání položek z více tabulek použijeme podmínku pomocí WHERE. Pokud máme v tabulkách sloupce, které se jmenují stejně, tak pokud je budeme v této podmínce používat, musíme specifikovat které tabulce sloupec patří připsáním jména tabulky a tečky před název sloupce. Je to dobré takto dělat i když sloupce nejsou stejné. Jednoduše se k sobě připojí položky, které splní podmínku (některé hodnoty tam ale mohou být vícekrát, spojí se vícekrát).</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># sloučení tabulek customers a orders podle podmínky</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> customers<span style="color: #000033;">,</span> orders
+<span style="color: #990099; font-weight: bold;">WHERE</span> customers.id <span style="color: #CC0099;">=</span> orders.customer_id<span style="color: #000033;">;</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Použitím podmínky s pomocí WHERE se INNER JOIN vytvoří implicitně. Je ale lepší jej vytvářet explicitně pomocí JOIN. Použijeme jej tak že použijeme SELECT jen na jednu tabulku a za tento příkaz napíšeme text 'JOIN', tabulku se kterou chceme tabulku spojit, text 'ON' a podmínku, která musí platit aby se položky spojili.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> customers
+<span style="color: #990099; font-weight: bold;">JOIN</span> orders
+    <span style="color: #990099; font-weight: bold;">ON</span> customers.id <span style="color: #CC0099;">=</span> orders.customer_id<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># podmínka, která musí platit aby se položky sloučili dohromady</span></pre>
+                </div>
+                <p class="paragraph paragraph--right-paddding u-margin-bottom-small">V předchozím příkladu jsme použili jen slovo 'JOIN', pokud bychom ale před něj zapsali ještě slovo 'INNER', bylo by to úplně stejné.</p>
+                <h3 class="heading-tertiary">LEFT JOIN</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento typ spojení vezme vše z jedné tabulky a popřípadě k tomu připojí něco z druhé tabulky. LEFT JOIN vytvoříme stejně jako INNER JOIN, jen před slovo 'JOIN' připíšeme slovo 'LEFT'. Pokud se pro nějakou položku v první tabulce nenajde nic v druhé tabulce, tak se pro vyplnění sloupců z druhé tabulky použije NULL.</p>
+                <div class="code-box u-margin-bottom-small">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># vezme vše z tabulky customers a popřípadě k tomu připojí něco z tabulky orders</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> customers
+<span style="color: #000099;">LEFT</span> <span style="color: #990099; font-weight: bold;">JOIN</span> orders
+    <span style="color: #990099; font-weight: bold;">ON</span> customers.id <span style="color: #CC0099;">=</span> orders.customer_id<span style="color: #000033;">;</span></pre>
+                </div>
+                <h3 class="heading-tertiary">RIGHT JOIN</h3>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Tento typ spojení vezme vše z druhé tabulky a popřípadě k tomu připojí něco z první tabulky. Pokud se pro nějakou položku v druhé tabulce nenajde nic v první tabulce, tak se pro vyplnění sloupců z první tabulky použije NULL.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># vezme vše z tabulky orders a popřípadě k tomu připojí něco z tabulky customers</span>
+<span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> customers
+<span style="color: #000099;">RIGHT</span> <span style="color: #990099; font-weight: bold;">JOIN</span> orders
+    <span style="color: #990099; font-weight: bold;">ON</span> customers.id <span style="color: #CC0099;">=</span> orders.customer_id<span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Řetězení spojování tabulek</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Spojování tabulek můžeme řetězit zapsáním dalšího JOIN za JOIN. Ukazuje to následující ukázka.</p>
+                <div class="code-box">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> title<span style="color: #000033;">,</span> rating<span style="color: #000033;">,</span> <span style="color: #000099;">CONCAT</span><span style="color: #FF00FF;">&#40;</span>first_name<span style="color: #000033;">,</span> <span style="color: #008000;">' '</span><span style="color: #000033;">,</span> last_name<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> reviewer
+<span style="color: #990099; font-weight: bold;">FROM</span> reviews
+<span style="color: #000099;">LEFT</span> <span style="color: #990099; font-weight: bold;">JOIN</span> series <span style="color: #808080; font-style: italic;"># sloučení tabulek reviews a series</span>
+    <span style="color: #990099; font-weight: bold;">ON</span> series.id <span style="color: #CC0099;">=</span> reviews.series_id
+<span style="color: #000099;">LEFT</span> <span style="color: #990099; font-weight: bold;">JOIN</span> reviewers <span style="color: #808080; font-style: italic;"># použití JOIN na sloučenou tabulku</span>
+    <span style="color: #990099; font-weight: bold;">ON</span> reviewers.id <span style="color: #CC0099;">=</span> reviews.reviewer_id<span style="color: #000033;">;</span></pre>
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+</body>
+</html>
