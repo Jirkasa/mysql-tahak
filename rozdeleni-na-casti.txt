@@ -5,7 +5,8 @@ DATABÁZE A TABULKY, DATOVÉ TYPY, CRUD OPERACE, PRIMARY A FOREIGN KEY, STRING F
 
 - neslouží to jako tutoriál - nemá to učit - má to připomínat
 
-zbývá: DATUMOVOVÉ FUNKCE
+
+- možná udělám ještě indexy: https://www.youtube.com/watch?v=fsG1XaZEa78&ab_channel=Socratica - HOTOVO
 
 
 DATABÁZE A TABULKY - ZATÍM HOTOVO

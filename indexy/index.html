@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes maximum-scale=2.2 minimum-scale=1.0">
+
+    <link rel="stylesheet" href="../media/css/icofont.min.css">
+    <link rel="stylesheet" href="../media/css/style.css">
+
+    <title>MySQL Tahák - Indexy</title>
+</head>
+<body>
+    <header class="header">
+        <a href="../" class="header__home-link">MySQL Tahák</a>
+    </header>
+    <div class="article-page">
+        <nav class="article-page__nav-side"></nav>
+        <div class="article-page__content-side">
+            <main class="article-page__content">
+                <h1 class="heading-primary u-center-text u-margin-bottom-small">Indexy</h1>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato stránka se týká tvorby indexů. Najdete tu krátké vysvětlení co to index je, jak jej vytvořit, smazat, jak indexy vypsat a jakou mají indexy nevýhodu. Pokud se o Indexech chcete dozvědět více, tak doporučuji podívat se na toto <a href="https://www.youtube.com/watch?v=fsG1XaZEa78&ab_channel=Socratica" target="_blank" class="anchor">video</a>.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">K čemu Index slouží?</h2>
+                <p class="paragraph paragraph--right-paddding u-margin-bottom-medium">Díky indexu můžeme v tabulkách, které obsahují velké množství dat hledat položky mnohem rychleji. Když pro tabulku vytvoříme index, tak se nám položky seřadí podle nějakého sloupce který si určíme. Když potom budeme v tabulce například hledat nějakou položku, tak se nám najde rychleji, protože se nemusí procházet celá tabulka. Můžeme si představit že hledáme něco v nějaké knize. Mohli bychom listovat celou knihou než bychom to našli. Pokud bychom se ale podívali do obsahu knihy, tak bychom to našli mnohem rychleji.</p>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Vytvoření Indexu</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">K vytvoření indexu nám slouží příkaz CREATE INDEX. Použijeme jej tak, že napíšeme text 'CREATE INDEX', jméno indexu, text 'ON' a do závorky napíšeme, který sloupec/sloupce chceme indexovat.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># vytvoření indexu podle sloupce first_name</span>
+<span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">INDEX</span> users_first_name_idx
+<span style="color: #990099; font-weight: bold;">ON</span> users <span style="color: #FF00FF;">&#40;</span>first_name<span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span>
+<span style="color: #808080; font-style: italic;"># pokud budeme v tabulce hledat nějaké položky podle sloupce first_name, tak to bude rychlejší</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Smazání Indexu</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pro smazání indexu slouží příkaz DROP INDEX. Použijeme jej tak, že napíšeme text 'DROP INDEX', jméno indexu, text 'ON' a jméno tabulky.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># smazání indexu users_first_name_idx v tabulce users</span>
+<span style="color: #990099; font-weight: bold;">DROP</span> <span style="color: #990099; font-weight: bold;">INDEX</span> users_first_name_idx <span style="color: #990099; font-weight: bold;">ON</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Výpis Indexů</h2>
+                <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pro výpis indexů tabulky slouží příkaz SHOW INDEX FROM.</p>
+                <div class="code-box u-margin-bottom-medium">
+                    <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># vypíše všechny indexy v tabulce users</span>
+<span style="color: #990099; font-weight: bold;">SHOW</span> <span style="color: #990099; font-weight: bold;">INDEX</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
+                </div>
+                <h2 class="heading-secondary u-margin-bottom-tiny">Cena Indexů</h2>
+                <p class="paragraph paragraph--right-padding">Indexy nejsou zadarmo. Indexy v databázi zaberou nějaké místo navíc. Kromě toho když budeme do databáze přidávat nové položky, bude to trvat déle protože se musí také změnit všechny potřebné indexy. Takže bychom si měli dobře rozmyslet jestli indexy opravdu potřebujeme.</p>
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        Copyright &copy; by Jiří Satora
+    </footer>
+</body>
+</html>
