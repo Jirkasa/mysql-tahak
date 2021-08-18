@@ -4,6 +4,20 @@
     &__nav-side {
         flex: 0 0 28rem;
         background-color: @colors[grey];
+
+        @media (max-width: #pxToEm(800)[]) {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: all .3s;
+            width: 28rem;
+            border-bottom-right-radius: 5px;
+            border-right: 4px solid @colors[pink];
+            border-bottom: 4px solid @colors[pink];
+            box-shadow: 0 .5rem 1rem rgba(@colors[black], .2);
+            z-index: 40;
+            transform: translateX(-100%);
+        }
     }
 
     &__content-side {
@@ -17,5 +31,9 @@
         margin: 0 auto;
 
         padding: 3rem;
+
+        @media (max-width: #pxToEm(450)[]) {
+            padding: 1.5rem;
+        }
     }
 }

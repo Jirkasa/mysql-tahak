@@ -2,7 +2,6 @@
     font-size: 1.6rem;
 
     background-color: @colors[code-background];
-    // border: 3px solid @colors[second-grey];
     border: 3px solid @colors[pink];
     border-radius: 4px;
     color: @colors[third-grey];
@@ -11,4 +10,26 @@
 
     white-space: nowrap;
     overflow-x: auto;
+
+    // width
+    &::-webkit-scrollbar {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+    
+    // track
+    &::-webkit-scrollbar-track {
+        background: darken(@colors[light-grey], 8%);
+    }
+    
+    // handle
+    &::-webkit-scrollbar-thumb {
+        background: darken(@colors[pink], 3%);
+        border-radius: 2px;
+        border: 2px solid lighten(@colors[pink], 13%);
+
+        &:hover {
+            background: @colors[pink];
+        }
+    }
 }

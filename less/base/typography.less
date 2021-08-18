@@ -52,6 +52,15 @@ body {
 
     &--right-padding {
         padding-right: 10rem;
+
+        #respond-phone(
+            {
+                padding-right: 5rem;
+            }
+        );
+        @media (max-width: #pxToEm(420)[]) {
+            padding-right: 0;
+        }
     }
 }
 
