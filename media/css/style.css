@@ -131,6 +131,12 @@ body {
   border-radius: 5px;
   padding: 1rem 2rem;
 }
+.main-btn:hover {
+  background-color: #fa4b59;
+}
+.main-btn:active {
+  background-color: #fa3242;
+}
 .main-btn--bigger:link,
 .main-btn--bigger:visited {
   font-size: 2rem;
