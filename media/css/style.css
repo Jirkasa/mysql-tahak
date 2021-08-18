@@ -5,6 +5,12 @@
 1200 - 1800px;  normal styles
 1800px + ;          Big desktop
 */
+/*
+centers element using absolute positioning
+*/
+/*
+converts pixels to em units for media queries
+*/
 *,
 *::before,
 *::after {
@@ -164,11 +170,11 @@ body {
   display: inline-block;
   font-size: 1.6rem;
   font-weight: 700;
+  padding: 1rem 2rem;
   background-color: #fb6470;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  padding: 1rem 2rem;
   user-select: none;
 }
 .main-btn:hover {
@@ -183,11 +189,11 @@ body {
 }
 .code-box {
   font-size: 1.6rem;
+  padding: 0.5rem;
   background-color: #e0e0e0;
   border: 3px solid #fb6470;
   border-radius: 4px;
   color: #3e3e3e;
-  padding: 0.5rem;
   white-space: nowrap;
   overflow-x: auto;
 }
@@ -208,14 +214,14 @@ body {
 }
 .table {
   font-size: 1.7rem;
+  border-collapse: collapse;
   border: 2px solid #fb6470;
   color: #3e3e3e;
-  border-collapse: collapse;
 }
 .table td,
 .table th {
-  border: 2px solid #fb6470;
   padding: 0.5rem;
+  border: 2px solid #fb6470;
 }
 .table td:first-child,
 .table th:first-child {
@@ -256,23 +262,23 @@ body {
 .part-card__heading {
   font-size: 2.1rem;
   font-weight: 700;
-  color: #fff;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 .part-card__description {
   font-size: 1.7rem;
   font-weight: 300;
-  color: #fff;
   margin-bottom: 1.5rem;
+  color: #fff;
 }
 .part-card__btn:link,
 .part-card__btn:visited {
   display: inline-block;
   font-size: 1.7rem;
+  padding: 0.3rem;
   color: #fff;
   text-decoration: none;
   border-bottom: 1px solid #fff;
-  padding: 0.3rem;
   position: relative;
   z-index: 1;
   transition: all 0.1s;
@@ -283,14 +289,14 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
   background-color: #fff;
   border-radius: 3px;
   transform: scaleY(0);
-  transition: all 0.1s;
   transform-origin: bottom;
-  z-index: -1;
+  transition: all 0.1s;
 }
 .part-card__btn:hover {
   color: #3e3e3e;
@@ -364,12 +370,12 @@ body {
 .navigation__link:link,
 .navigation__link:visited {
   display: block;
+  padding: 0.5rem;
   color: #fff;
   text-decoration: none;
   border: 2px solid #fff;
   background-color: #fb6470;
   border-radius: 4px;
-  padding: 0.5rem;
   user-select: none;
 }
 .navigation__link:hover {
@@ -380,13 +386,13 @@ body {
 }
 .navigation-btn {
   display: none;
+  font-size: 2rem;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 40;
   height: 8.7rem;
   width: 4rem;
-  font-size: 2rem;
   color: #fff;
   background-color: #fb6470;
   border-top-right-radius: 5px;
@@ -431,11 +437,11 @@ body {
   left: 50%;
   z-index: 6;
   transform: translate(-50%, -50%) scale(0);
+  padding: 1rem;
   background-color: #353541;
   border: 2px solid #d0d0d8;
   border-radius: 4px;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-  padding: 1rem;
   transition: all 0.3s 0.2s;
   overflow-y: auto;
 }
@@ -457,9 +463,9 @@ body {
 .main-navigation__heading {
   font-size: 2.4rem;
   font-weight: 700;
+  margin-bottom: 0.7rem;
   color: #fff;
   text-align: center;
-  margin-bottom: 0.7rem;
 }
 .main-navigation ul {
   list-style: none;
@@ -490,9 +496,9 @@ body {
   top: 2rem;
   right: 2rem;
   z-index: 10;
-  background-color: #fb6470;
   width: 5rem;
   height: 5rem;
+  background-color: #fb6470;
   border-radius: 50%;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -557,10 +563,10 @@ body {
   transform: translateY(-0.8rem) rotate(-45deg);
 }
 .main-navigation-checkbox:checked ~ .main-navigation-background {
-  width: 140vmax;
-  height: 140vmax;
   top: 50%;
   right: 50%;
+  width: 140vmax;
+  height: 140vmax;
   transform: translate(50%, -50%);
 }
 .main-navigation-checkbox:checked + .main-navigation {
@@ -586,8 +592,8 @@ body {
   text-align: center;
 }
 .home-cheatsheets-section {
-  background-color: #fff;
   padding: 3rem;
+  background-color: #fff;
 }
 @media (max-width: 25em) {
   .home-cheatsheets-section {
@@ -699,14 +705,14 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    transition: all 0.3s;
+    z-index: 40;
     width: 28rem;
     border-bottom-right-radius: 5px;
     border-right: 4px solid #fb6470;
     border-bottom: 4px solid #fb6470;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    z-index: 40;
     transform: translateX(-100%);
+    transition: all 0.3s;
   }
 }
 .article-page__content-side {

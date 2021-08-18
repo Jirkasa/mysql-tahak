@@ -3,35 +3,36 @@
     max-width: 40rem;
     max-height: 100vh;
     max-height: calc(100vh - 2rem);
+
     position: fixed;
     top: 50%;
     left: 50%;
     z-index: 6;
     transform: translate(-50%, -50%) scale(0);
 
+    padding: 1rem;
+
     background-color: @colors[grey];
     border: 2px solid lighten(@colors[grey], 60%);
     border-radius: 4px;
     box-shadow: 0 1rem 1rem rgba(@colors[black], .2);
 
-    padding: 1rem;
-
     transition: all .3s .2s;
 
     overflow-y: auto;
 
-    // width
+    // scrollbar width
     &::-webkit-scrollbar {
         width: 1.3rem;
         height: 1.3rem;
     }
     
-    // track
+    // scrollbar track
     &::-webkit-scrollbar-track {
         background: @colors[very-dark-blue];
     }
     
-    // handle
+    // scrollbar handle
     &::-webkit-scrollbar-thumb {
         background: darken(@colors[pink], 5%);
         border-radius: 2px;
@@ -46,10 +47,10 @@
         font-size: 2.4rem;
         font-weight: 700;
 
+        margin-bottom: .7rem;
+
         color: @colors[white];
         text-align: center;
-
-        margin-bottom: .7rem;
     }
 
     ul {
@@ -93,9 +94,10 @@
     right: 2rem;
     z-index: 10;
 
-    background-color: @colors[pink];
     width: 5rem;
     height: 5rem;
+
+    background-color: @colors[pink];
     border-radius: 50%;
     box-shadow: 0 .5rem 1rem rgba(@colors[black], .2);
 
@@ -105,6 +107,7 @@
         #center-pos-abs();
         width: 60%;
         height: 2px;
+
         background-color: @colors[white];
         transform-origin: 25% 25%;
         transition: all .2s;
@@ -116,6 +119,7 @@
 
             width: 100%;
             height: 2px;
+
             background-color: @colors[white];
 
             transition: all .3s;
@@ -128,6 +132,7 @@
 
             width: 100%;
             height: 2px;
+
             background-color: @colors[white];
 
             transition: all .3s;
@@ -166,6 +171,7 @@
         ~ .main-navigation-btn .main-navigation-btn__icon {
             background-color: transparent;
             transform: rotate(180deg);
+
             &::before {
                 transform: translateY(.8rem) rotate(45deg);
             }
@@ -174,10 +180,12 @@
             }
         }
         ~ .main-navigation-background {
-            width: 140vmax;
-            height: 140vmax;
             top: 50%;
             right: 50%;
+            
+            width: 140vmax;
+            height: 140vmax;
+            
             transform: translate(50%, -50%);
         }
 

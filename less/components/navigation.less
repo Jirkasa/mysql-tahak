@@ -57,6 +57,7 @@
             }
         }
 
+        // last vertical line has only 50% height
         &--last-indented {
             &::before {
                 height: 50%;
@@ -68,13 +69,13 @@
         &:link, &:visited {
             display: block;
 
+            padding: .5rem;
+
             color: @colors[white];
             text-decoration: none;
             border: 2px solid @colors[white];
             background-color: @colors[pink];
             border-radius: 4px;
-
-            padding: .5rem;
 
             user-select: none;
         }

@@ -9,14 +9,16 @@
             position: fixed;
             top: 0;
             left: 0;
-            transition: all .3s;
+            z-index: 40;
+
             width: 28rem;
             border-bottom-right-radius: 5px;
             border-right: 4px solid @colors[pink];
             border-bottom: 4px solid @colors[pink];
             box-shadow: 0 .5rem 1rem rgba(@colors[black], .2);
-            z-index: 40;
             transform: translateX(-100%);
+
+            transition: all .3s;
         }
     }
 
