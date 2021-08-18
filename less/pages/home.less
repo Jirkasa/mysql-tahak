@@ -19,3 +19,56 @@
         text-align: center;
     }
 }
+
+.home-cheatsheets-section {
+    background-color: @colors[white];
+    padding: 3rem;
+
+    &__text {
+        width: 100%;
+        max-width: (@grid-width / 4) * 3;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+
+        text-align: center;
+    }
+
+    &__parts {
+        width: 100%;
+        max-width: @grid-width;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        
+        :last-child {
+            grid-column-start: 2;
+        }
+    }
+}
+
+.home-about-section {
+    background-color: @colors[white];
+    border-top: 2px solid darken(@colors[white], 10%);
+
+    padding: 3rem;
+
+    &__content {
+        width: 100%;
+        max-width: @grid-width;
+        margin: 0 auto;
+
+        display: flex;
+    }
+
+    &__text-side {
+        flex: 0 1 45%;
+        padding-right: 2rem;
+    }
+
+    &__video-side {
+        flex: 0 1 55%;
+        padding-left: 2rem;
+    }
+}

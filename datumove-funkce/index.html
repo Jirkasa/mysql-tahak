@@ -15,52 +15,82 @@
         <a href="../" class="header__home-link">MySQL Tahák</a>
     </header>
     <div class="article-page">
-        <nav class="article-page__nav-side"></nav>
+        <nav class="article-page__nav-side">
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#curdate" class="navigation__link">CURDATE</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#curtime" class="navigation__link">CURTIME</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#day" class="navigation__link">DAY</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#dayname" class="navigation__link">DAYNAME</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#dayofyear" class="navigation__link">DAYOFYEAR</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#date-format" class="navigation__link">DATE_FORMAT</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#datediff" class="navigation__link">DATEDIFF</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#date-add" class="navigation__link">DATE_ADD</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#date-sub" class="navigation__link">DATE_SUB</a>
+                </li>
+            </ul>
+        </nav>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Datumové funkce</h1>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Na této stránce najdete pár funkcí týkajících se datumu a času. Napsal jsem jich tu jen pár, na ostatní se můžete podívat třeba v <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html" target="_blank" class="anchor">dokumentaci</a>.</p>
-                <h2 class="heading-secondary u-margin-bottom-tiny">CURDATE</h2>
+                <h2 id="curdate" class="heading-secondary u-margin-bottom-tiny">CURDATE</h2>
                 <p class="paragraph paragraph--right-paddding u-margin-bottom-small">Zavoláním funkce CURDATE můžeme získat aktuální datum.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">CURDATE</span><span style="color: #FF00FF;">&#40;</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí aktuální datum</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">CURTIME</h2>
+                <h2 id="curtime" class="heading-secondary u-margin-bottom-tiny">CURTIME</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Zavolání funkce CURTIME můžeme získat aktuální čas.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">CURTIME</span><span style="color: #FF00FF;">&#40;</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí aktuální čas</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">DAY</h2>
+                <h2 id="day" class="heading-secondary u-margin-bottom-tiny">DAY</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce DAY si z datumu můžeme vytáhnout den.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">DAY</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-16'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 16</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">DAYNAME</h2>
+                <h2 id="dayname" class="heading-secondary u-margin-bottom-tiny">DAYNAME</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce DAYNAME z datumu můžeme získat jméno dne.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">DAYNAME</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-16'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 'Monday'</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">DAYOFYEAR</h2>
+                <h2 id="dayofyear" class="heading-secondary u-margin-bottom-tiny">DAYOFYEAR</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce DAYOFYEAR můžeme z datumu zjistit o kolikátý den v roce se jedná.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">DAYOFYEAR</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-16'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 228</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">DATE_FORMAT</h2>
+                <h2 id="date-format" class="heading-secondary u-margin-bottom-tiny">DATE_FORMAT</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Funkce DATE_FORMAT nám umožňuje si různě naformátovat datum. Jako parametr jí předáváme řetězec, který chceme formátovat a jako druhý parametr předáváme řetězec, který určuje naformátování datumu. V řetězci ve kterém určujeme jak bude datum naformátované můžeme použít různé speciální formátovací značky na které se můžete podívat v <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-format" target="_blank" class="anchor">dokumentaci</a>.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">DATE_FORMAT</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-16'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'the <span style="color: #008080; font-weight: bold;">%</span>D of <span style="color: #008080; font-weight: bold;">%</span>M <span style="color: #008080; font-weight: bold;">%</span>Y'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 'the 16th of August 2021'</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">DATEDIFF</h2>
+                <h2 id="datediff" class="heading-secondary u-margin-bottom-tiny">DATEDIFF</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Funkce DATEDIFF nám umožňuje od sebe odečíst dva datumy a získat počet dní mezi nimi. Jako parametry jí předáváme datumy, které od sebe chceme odečíst.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">DATEDIFF</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-16'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'2021-07-13'</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 34</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">DATE_ADD</h2>
+                <h2 id="date-add" class="heading-secondary u-margin-bottom-tiny">DATE_ADD</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce DATE_ADD můžeme k datumu přičíst nějaký časový interval. Více v <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-add" target="_blank" class="anchor">dokumentaci</a>.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">DATE_ADD</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-16'</span><span style="color: #000033;">,</span> <span style="color: #CC0099; font-weight: bold;">INTERVAL</span> <span style="color: #008080;">1</span> <span style="color: #9900FF; font-weight: bold;">MONTH</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí '2021-09-16'</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">DATE_SUB</h2>
+                <h2 id="date-sub" class="heading-secondary u-margin-bottom-tiny">DATE_SUB</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce DATE_SUB můžeme od datumu odečíst nějaký časový interval. Více v <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-sub" target="_blank" class="anchor">dokumentaci</a>.</p>
                 <div class="code-box">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">DATE_SUB</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008000;">'2021-08-16'</span><span style="color: #000033;">,</span> <span style="color: #CC0099; font-weight: bold;">INTERVAL</span> <span style="color: #008080;">1</span> <span style="color: #9900FF; font-weight: bold;">MONTH</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí '2021-07-16'</span></pre>

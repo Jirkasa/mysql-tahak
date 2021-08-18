@@ -15,14 +15,41 @@
         <a href="../" class="header__home-link">MySQL Tahák</a>
     </header>
     <div class="article-page">
-        <nav class="article-page__nav-side"></nav>
+        <nav class="article-page__nav-side">
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#primary-key" class="navigation__link">PRIMARY KEY</a>
+                </li>
+                <li class="navigation__item navigation__item--indented">
+                    <a href="#vytvoreni-primarniho-klice" class="navigation__link">Vytvoření primárního klíče</a>
+                </li>
+                <li class="navigation__item navigation__item--indented">
+                    <a href="#vytvoreni-primarniho-klice-z-vice-sloupcu" class="navigation__link">Vytvoření primárního klíče z více sloupců</a>
+                </li>
+                <li class="navigation__item navigation__item--indented navigation__item--last-indented">
+                    <a href="#automaticke-zvysovani-hodnoty" class="navigation__link">Automatické zvyšování hodnoty</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#foreign-key" class="navigation__link">FOREIGN KEY</a>
+                </li>
+                <li class="navigation__item navigation__item--indented">
+                    <a href="#vytvoreni-foreign-key" class="navigation__link">Vytvoření Foreign Key</a>
+                </li>
+                <li class="navigation__item navigation__item--indented">
+                    <a href="#smazani-polozek-pri-smazani-polozky-na-kterou-polozky-odkazuji" class="navigation__link">Smazání položek při smazání položky na kterou položky odkazují</a>
+                </li>
+                <li class="navigation__item navigation__item--indented navigation__item--last-indented">
+                    <a href="#vytvoreni-vice-foreign-klicu" class="navigation__link">Vytvoření více Foreign klíčů</a>
+                </li>
+            </ul>
+        </nav>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Primary a Foreign Key</h1>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato stránka obsahuje informace o Primary a Foreign klíčích.</p>
-                <h2 class="heading-secondary u-margin-bottom-tiny">PRIMARY KEY</h2>
+                <h2 id="primary-key" class="heading-secondary u-margin-bottom-tiny">PRIMARY KEY</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Primární klíč je sloupec nebo více sloupců, které jednoznačně definují položku v tabulce. Pokud nějaký sloupec označíme jako PRIMARY KEY, tak pro každou položku v tabulce musí být v tomto sloupci unikátní hodnota. Pro jednu tabulku můžeme vytvořit jen jeden primární klíč.</p>
-                <h3 class="heading-tertiary">Vytvoření primárního klíče</h3>
+                <h3 id="vytvoreni-primarniho-klice" class="heading-tertiary">Vytvoření primárního klíče</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Primární klíč můžeme vytvořit dvěma způsoby. První je ten, že při vytváření tabulky přidáme za sloupce text 'PRIMARY KEY' a za něj do závorky sloupec, který chceme použít jako primární klíč.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
@@ -42,7 +69,7 @@
     email <span style="color: #999900; font-weight: bold;">VARCHAR</span><span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">320</span><span style="color: #FF00FF;">&#41;</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h3 class="heading-tertiary">Vytvoření primárního klíče z více sloupců</h3>
+                <h3 id="vytvoreni-primarniho-klice-z-vice-sloupcu" class="heading-tertiary">Vytvoření primárního klíče z více sloupců</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme, tak můžeme jako primární klíč použít i více sloupců. Potom nebudeme v tabulce moci mít dvě položky, které mají ve sloupcích, které se používají jako primární klíč stejné hodnoty. Pokud ale budou mít třeba jen jeden sloupec stejný, tak v tabulce mohou být. Pro použití více sloupců jako primární klíč je jen oddělíme při vytváření tabulky čárkou.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> likes
@@ -52,7 +79,7 @@
     <span style="color: #990099; font-weight: bold;">PRIMARY KEY</span> <span style="color: #FF00FF;">&#40;</span>user_id<span style="color: #000033;">,</span> photo_id<span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># použití více sloupců jako primární klíč</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h3 class="heading-tertiary">Automatické zvyšování hodnoty</h3>
+                <h3 id="automaticke-zvysovani-hodnoty" class="heading-tertiary">Automatické zvyšování hodnoty</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Primární klíč většinou v tabulce používáme jako unikátní identifikátor položky. Většinou u každé položky chceme mít nějaké unikátní číslo, které jí přiřadíme při jejím vložením do tabulky. O to, aby bylo číslo pro každou položku unikátní bychom se samozřejmě mohli starat mimo MySQL, ale je mnohem lepší když se to za nás bude řešit automaticky. Pokud za nějaký sloupec při vytváření tabulky napíšeme slovo 'AUTO_INCREMENT', tak se nám hodnota ve sloupci bude automaticky zvyšovat když do tabulky přidáme novou položku.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
@@ -63,9 +90,9 @@
     <span style="color: #990099; font-weight: bold;">PRIMARY KEY</span> <span style="color: #FF00FF;">&#40;</span>id<span style="color: #FF00FF;">&#41;</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">FOREIGN KEY</h2>
+                <h2 id="foreign-key" class="heading-secondary u-margin-bottom-tiny">FOREIGN KEY</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Foreign key slouží k napojení jedné tabulky na druhou. Použijeme jej, když například budeme chtít v tabulce chtít odkazovat na položku v jiné tabulce pomocí jejího identifikátoru. Foreign key nám jednoduše zamezí ukládat do sloupce, který oznažíme jako Foreign key hodnoty, které neexistují ve sloupci v jiné tabulce na kterou Foreign key odkazuje.</p>
-                <h3 class="heading-tertiary">Vytvoření Foreign Key</h3>
+                <h3 id="vytvoreni-foreign-key" class="heading-tertiary">Vytvoření Foreign Key</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Foreign key vytvoříme tak, že při vytváření tabulky přidáme za sloupce text 'FOREIGN KEY', za něj do závorky jaký sloupec chceme použít jako Foreign key, text 'REFERENCES', jméno tabulky na kterou chceme Foreign key napojit a za něj do závorky jméno sloupce z této tabulky.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># v této tabulce nepůjde ve sloupci customer_id nastavit hodnotu, která neexistuje ve sloupci id v tabulce customers</span>
@@ -78,7 +105,7 @@
     <span style="color: #990099; font-weight: bold;">FOREIGN KEY</span> <span style="color: #FF00FF;">&#40;</span>customer_id<span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">REFERENCES</span> customers<span style="color: #FF00FF;">&#40;</span>id<span style="color: #FF00FF;">&#41;</span> <span style="color: #808080; font-style: italic;"># vytvoření Foreign Key</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h3 class="heading-tertiary">Smazání položek při smazání položky na kterou položky odkazují</h3>
+                <h3 id="smazani-polozek-pri-smazani-polozky-na-kterou-polozky-odkazuji" class="heading-tertiary">Smazání položek při smazání položky na kterou položky odkazují</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Foreign key nám zamezí odstranit položky, na které se v tabulce používající Foreign key odkazuje. Pokud bychom položku chtěli odstranit, tak nejdříve musíme odstranit položku v tabulce s Foreign key, která na položku odkazuje. Pokud to ale tímto způsobem dělat nechceme, tak si můžeme při vytváření Foreign key nastavit, že pri smazání položky na kterou Foreign key odkazuje se položka s Foreign key také smaže. Tuto vlastnost nastavíme připsáním textu 'ON DELETE CASCADE' za vytvoření Foreign key jak ukazuje následující ukázka.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> orders
@@ -91,7 +118,7 @@
     <span style="color: #990099; font-weight: bold;">ON</span> <span style="color: #990099; font-weight: bold;">DELETE</span> <span style="color: #990099; font-weight: bold;">CASCADE</span> <span style="color: #808080; font-style: italic;"># při smazání položky v tabulce customers se smaže také položka v této tabulce odkazující na ni</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h3 class="heading-tertiary">Vytvoření více Foreign klíčů</h3>
+                <h3 id="vytvoreni-vice-foreign-klicu" class="heading-tertiary">Vytvoření více Foreign klíčů</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Narozdíl od primáních klíčů si v tabulce můžeme vytvořit i více Foreign klíčů pokud potřebujeme, jednoduše je oddělíme čárkou.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> likes

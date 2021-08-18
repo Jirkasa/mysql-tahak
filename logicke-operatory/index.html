@@ -15,12 +15,42 @@
         <a href="../" class="header__home-link">MySQL Tahák</a>
     </header>
     <div class="article-page">
-        <nav class="article-page__nav-side"></nav>
+        <nav class="article-page__nav-side">
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#porovnavaci-operatory" class="navigation__link">Porovnávací operátory</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#logicke-operatory" class="navigation__link">Logické operátory</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#between" class="navigation__link">BETWEEN</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#in" class="navigation__link">IN</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#like" class="navigation__link">LIKE</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#case" class="navigation__link">CASE</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#is-null" class="navigation__link">IS NULL</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#funkce-if" class="navigation__link">Funkce IF</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#funkce-cast" class="navigation__link">Funkce CAST</a>
+                </li>
+            </ul>
+        </nav>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Logické Operátory</h1>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato část je sice pojmenovaná jako logické operátory, ale týká se spíš logiky celkově, protože tu nejsou jen samotné logické operátory. Najdete tu seznam porovnávacích a logických operátorů, BETWEEN, IN, LIKE, CASE, IS NULL a funkce IF a CAST.</p>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Porovnávací operátory</h2>
+                <h2 id="porovnavaci-operatory" class="heading-secondary u-margin-bottom-tiny">Porovnávací operátory</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">V MySQL máme k dispozici k porovnávání hodnot pár porovnávacích operátorů. Ukazuje je následující tabulka.</p>
                 <table class="table u-margin-bottom-small">
                     <thead>
@@ -68,7 +98,7 @@
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span> <span style="color: #CC0099;">=</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí NULL</span>
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #9900FF; font-weight: bold;">NULL</span> <span style="color: #CC0099;">&lt;=&gt;</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Logické operátory</h2>
+                <h2 id="logicke-operatory" class="heading-secondary u-margin-bottom-tiny">Logické operátory</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">V MySQL máme k dispozici logické operátory, které můžeme použít k tvorbě komplikovanějších podmínek. Ukazuje je následující tabulka.</p>
                 <table class="table u-margin-bottom-small">
                     <thead>
@@ -105,7 +135,7 @@
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">XOR</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">XOR</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1</span>
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">XOR</span> <span style="color: #008080;">1</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">BETWEEN</h2>
+                <h2 id="between" class="heading-secondary u-margin-bottom-tiny">BETWEEN</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud potřebujeme vytvořit podmínku ve které se ptáme jestli je nějaká hodnota uvnitř nějakého intervalu, tak k tomu můžeme použít BETWEEN operátor. Použijeme jej tak že za hodnotu na kterou ho chceme aplikovat napíšeme slovo 'BETWEEN', hodnotu od které interval začíná, slovo 'AND' a hodnotu kde interval končí.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vrátí všechny položky, které mají ve sloupci released_year hodnotu, která je uvnitř intervalu od 2004 do 2015</span>
@@ -124,7 +154,7 @@
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">3</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">5</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0 (nepravda)</span>
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">1</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #CC0099; font-weight: bold;">BETWEEN</span> <span style="color: #008080;">2</span> <span style="color: #CC0099; font-weight: bold;">AND</span> <span style="color: #008080;">5</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">IN</h2>
+                <h2 id="in" class="heading-secondary u-margin-bottom-tiny">IN</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud se chceme zeptat jestli se nějaká hodnota rovná nějaké hodnotě ze seznamu hodnot, tak k tomu můžeme použít operátor IN. Použijeme jej tak, že za hodnotu na kterou ho chceme aplikovat napíšeme slovo 'IN' a za něj do závorek vypíšeme seznam hodnot.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující příkaz vrátí jen položky, které mají ve sloupci username hodnotu 'Pavel', 'Marek' nebo 'Mirek'</span>
@@ -143,7 +173,7 @@
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">3</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">4</span><span style="color: #000033;">,</span> <span style="color: #008080;">7</span><span style="color: #000033;">,</span> <span style="color: #008080;">9</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 1 (pravda)</span>
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #008080;">7</span> <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #990099; font-weight: bold;">IN</span> <span style="color: #FF00FF;">&#40;</span><span style="color: #008080;">4</span><span style="color: #000033;">,</span> <span style="color: #008080;">7</span><span style="color: #000033;">,</span> <span style="color: #008080;">9</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí 0 (nepravda)</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">LIKE</h2>
+                <h2 id="like" class="heading-secondary u-margin-bottom-tiny">LIKE</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí operátoru LIKE se můžeme zeptat jestli řetězec splňuje nějaký vzor. Tento příkaz použijeme tak, že za hodnotu na kterou jej chceme aplikovat napíšeme slovo 'LIKE' a řetězec, který představuje vzor, který má hodnota splnit. Tento řetězec může obsahovat znaky procenta nebo podtržítka. Co tyto znaky představují popisuje následující tabulka. Na malá a velká písmena se nehledí.</p>
                 <table class="table u-margin-bottom-small">
                     <thead>
@@ -176,7 +206,7 @@
 <span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
 <span style="color: #990099; font-weight: bold;">WHERE</span> username <span style="color: #CC0099; font-weight: bold;">NOT</span> <span style="color: #CC0099; font-weight: bold;">LIKE</span> <span style="color: #008000;">'Pa<span style="color: #008080; font-weight: bold;">%</span>'</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># řetězec nesmí začínat znaky 'Pa'</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">CASE</h2>
+                <h2 id="case" class="heading-secondary u-margin-bottom-tiny">CASE</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí CASE a pár dalších slov můžeme nastavovat hodnoty podle podmínek podobně jako v programovacích jazycích pomocí if, else if a else. Nevím jak bych to popsal v textu, tady je ukázka podle které to pravděpodobně pochopíte lépe:</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> title<span style="color: #000033;">,</span> released_year<span style="color: #000033;">,</span>
@@ -187,19 +217,19 @@
     <span style="color: #009900;">END</span> <span style="color: #990099; font-weight: bold;">AS</span> genre <span style="color: #808080; font-style: italic;"># hodnoty se uloží pod sloupec genre</span>
 <span style="color: #990099; font-weight: bold;">FROM</span> books<span style="color: #000033;">;</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">IS NULL</h2>
+                <h2 id="is-null" class="heading-secondary u-margin-bottom-tiny">IS NULL</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Zapsáním 'IS NULL' za hodnotu můžeme zjistit jestli je NULL nebo ne.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #CC0099;">*</span> <span style="color: #990099; font-weight: bold;">FROM</span> users
 <span style="color: #990099; font-weight: bold;">WHERE</span> score <span style="color: #CC0099; font-weight: bold;">IS</span> <span style="color: #9900FF; font-weight: bold;">NULL</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vrátí jen položky, které mají ve sloupci score NULL</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Funkce IF</h2>
+                <h2 id="funkce-if" class="heading-secondary u-margin-bottom-tiny">Funkce IF</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pomocí funkce IF můžeme nastavit jednu ze dvou hodnot podle předané podmínky. Jako první parametr funkci IF předáváme podmínku. Jako druhý parametr předáváme hodnotu, která se nastaví když se podmínka splní a jako třetí parametr předáváme hodnotu, která se nastaví když se podmínka nesplní.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> username<span style="color: #000033;">,</span> score<span style="color: #000033;">,</span> <span style="color: #009900;">IF</span><span style="color: #FF00FF;">&#40;</span>score <span style="color: #CC0099;">&gt;</span> <span style="color: #008080;">50</span><span style="color: #000033;">,</span> <span style="color: #008000;">'uspěl'</span><span style="color: #000033;">,</span> <span style="color: #008000;">'neuspěl'</span><span style="color: #FF00FF;">&#41;</span> <span style="color: #990099; font-weight: bold;">AS</span> vysledek
 <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Funkce CAST</h2>
+                <h2 id="funkce-cast" class="heading-secondary u-margin-bottom-tiny">Funkce CAST</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Občas můžeme chtít hodnoty převést na jiný datový typ než s nimi vytvoříme například nějakou podmínku. K tomu nám slouží funkce CAST. Do této funkce napíšeme hodnotu kterou chceme převést, text 'AS' a datový typ na který chceme hodnotu převést.</p>
                 <div class="code-box">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># následující funkce převede DATE na DATETIME</span>

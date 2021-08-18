@@ -15,12 +15,27 @@
         <a href="../" class="header__home-link">MySQL Tahák</a>
     </header>
     <div class="article-page">
-        <nav class="article-page__nav-side"></nav>
+        <nav class="article-page__nav-side">
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#syntaxe" class="navigation__link">Syntaxe</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#ukazka-triggeru" class="navigation__link">Ukázka Triggeru</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#vypsani-vsech-triggeru" class="navigation__link">Vypsání všech Triggerů</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#smazani-triggeru" class="navigation__link">Smazání Triggeru</a>
+                </li>
+            </ul>
+        </nav>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Triggery</h1>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Na této stránce se nachází informace o databázových triggerech. Jde o kód, který se automaticky spouští když se změní specifická tabulka.</p>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Syntaxe</h2>
+                <h2 id="syntaxe" class="heading-secondary u-margin-bottom-tiny">Syntaxe</h2>
                 <p class="paragraph paragraph--right-paddding u-margin-bottom-small">Kód pro vytvoření triggeru vypadá takto:</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TRIGGER</span> jméno_triggeru
@@ -35,7 +50,7 @@ kdy_se_spustí pro_jakou_operaci <span style="color: #990099; font-weight: bold;
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pod pro_jakou_operaci píšeme pro jakou operaci se má trigger spustit. Můžeme si vybrat mezi INSERT, UPDATE a DELETE.</p>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pod jméno_tabulky píšeme jméno tabulky u které když se provede specifikovaná operace, spustí se trigger.</p>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Mezi slova 'BEGIN' a 'END' píšeme kód, který se má spustit.</p>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Ukázka Triggeru</h2>
+                <h2 id="ukazka-triggeru" class="heading-secondary u-margin-bottom-tiny">Ukázka Triggeru</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Následující ukázka vytvoření triggeru ukazuje. Je tam použit příkaz DELIMITER, který mění znak, který slouží k ukončení příkazu. Používáme ho, protože uvnitř kódu ukončujeme příkazy, ale nechceme aby se hned spustili. Dále tam používáme příkaz SIGNAL SQLSTATE pomocí kterého nastavíme chybu, když je ve sloupci age přidávané položky menší hodnota než 18. Chybový kód 45000 představuje uživatelsky definovanou chybu, takže jej můžeme použít k vytvoření vlastních chyb. Myslím že jiný chybový kód než je 45000 není důležité znát.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;">DELIMITER $$ <span style="color: #808080; font-style: italic;"># změnění delimiteru (kód se nebude ukončovat pomocí ; ale $$)</span>
@@ -54,12 +69,12 @@ $$ <span style="color: #808080; font-style: italic;"># ukončení kódu</span>
 DELIMITER <span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># změnění delimiteru zpět na ;</span></pre>
                 </div>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">V předchozí ukázce kódu se ptáme jestli je uživatel dospělý než ho uložíme do databáze. Tuto operaci by bylo lepší dělat mimo MySQL a bylo by to rychlejší. Alespoň to ale ukazuje, že jde něco takového vytvořit.</p>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Vypsání všech Triggerů</h2>
+                <h2 id="vypsani-vsech-triggeru" class="heading-secondary u-margin-bottom-tiny">Vypsání všech Triggerů</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Všechny vytvořené triggery můžeme vypsat pomocí příkazu SHOW TRIGGERS.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SHOW TRIGGERS</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vypíše všechny triggery</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Smazání Triggeru</h2>
+                <h2 id="smazani-triggeru" class="heading-secondary u-margin-bottom-tiny">Smazání Triggeru</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Trigger můžeme smazat pomocí příkazu DROP TRIGGER.</p>
                 <div class="code-box">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">DROP</span> <span style="color: #990099; font-weight: bold;">TRIGGER</span> must_be_adult<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># smaže Trigger, který se jmenuje must_be_adult</span></pre>

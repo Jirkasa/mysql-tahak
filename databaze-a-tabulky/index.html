@@ -15,42 +15,84 @@
         <a href="../" class="header__home-link">MySQL Tahák</a>
     </header>
     <div class="article-page">
-        <nav class="article-page__nav-side"></nav>
+        <nav class="article-page__nav-side">
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="#vypsani-vsech-databazi" class="navigation__link">Vypsání všech databází</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#vytvoreni-databaze" class="navigation__link">Vytvoření databáze</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#smazani-databaze" class="navigation__link">Smazání databáze</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#jak-zacit-pouzivat-databazi" class="navigation__link">Jak začít používat databázi</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#zjisteni-jakou-databazi-pouzivame" class="navigation__link">Zjištění jakou databázi používáme</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#vypsani-vsech-tabulek-v-databazi" class="navigation__link">Vypsání všech tabulek v databázi</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#vypsani-sloupcu-tabulky" class="navigation__link">Vypsání sloupců tabulky</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#vytvoreni-tabulky" class="navigation__link">Vytvoření tabulky</a>
+                </li>
+                <li class="navigation__item navigation__item--indented">
+                    <a href="#zakazani-hodnoty-null-ve-sloupci" class="navigation__link">Zakázání hodnoty NULL ve sloupci</a>
+                </li>
+                <li class="navigation__item navigation__item--indented">
+                    <a href="#nastaveni-defaultni-hodnoty-pro-sloupec" class="navigation__link">Nastavení defaultní hodnoty pro sloupec</a>
+                </li>
+                <li class="navigation__item navigation__item--indented navigation__item--last-indented">
+                    <a href="#unikatni-hodnoty-ve-sloupci" class="navigation__link">Unikátní hodnoty ve sloupci</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#smazani-tabulky" class="navigation__link">Smazání tabulky</a>
+                </li>
+                <li class="navigation__item">
+                    <a href="#spousteni-kodu-ze-souboru" class="navigation__link">Spouštění kódu ze souboru</a>
+                </li>
+            </ul>
+        </nav>
         <div class="article-page__content-side">
             <main class="article-page__content">
                 <h1 class="heading-primary u-center-text u-margin-bottom-small">Databáze a Tabulky</h1>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-medium">Tato stránka obsahuje informace o tom jak vytvořit a smazat databázi nebo tabulky v ní. Najdete tu také jak ukázat tabulky databáze a jejich sloupce, jak začít používat databázi, jak vypsat všechny vytvořené databáze a jak zjistit která databáze je zrovna používána.</p>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Vypsání všech databází</h2>
+                <h2 id="vypsani-vsech-databazi" class="heading-secondary u-margin-bottom-tiny">Vypsání všech databází</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Všechny vytvořené databáze můžeme vypsat pomocí příkazu SHOW DATABASES.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SHOW</span> <span style="color: #990099; font-weight: bold;">DATABASES</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vypíše všechny databáze</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Vytvoření databáze</h2>
+                <h2 id="vytvoreni-databaze" class="heading-secondary u-margin-bottom-tiny">Vytvoření databáze</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Novou databázi můžeme vytvořit pomocí příkazu CREATE DATABASE.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">DATABASE</span> moje_db<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vytvoří novou databázi, která se bude jmenovat moje_db</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Smazání databáze</h2>
+                <h2 id="smazani-databaze" class="heading-secondary u-margin-bottom-tiny">Smazání databáze</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Smazat databázi můžeme pomocí příkazu DROP DATABASE.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">DROP</span> <span style="color: #990099; font-weight: bold;">DATABASE</span> moje_db<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># smaže databázi, která se jmenuje moje_db</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Jak začít používat databázi</h2>
+                <h2 id="jak-zacit-pouzivat-databazi" class="heading-secondary u-margin-bottom-tiny">Jak začít používat databázi</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Začít používat databázi (přepnout se do ní) můžeme pomocí příkazu USE.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">USE</span> moje_db<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># začne se používat databáze, která se jmenuje moje_db</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Zjištění jakou databázi používáme</h2>
+                <h2 id="zjisteni-jakou-databazi-pouzivame" class="heading-secondary u-margin-bottom-tiny">Zjištění jakou databázi používáme</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Zjistit kterou databázi používáme můžeme pomocí příkazu SELECT database().</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SELECT</span> <span style="color: #000099;">database</span><span style="color: #FF00FF;">&#40;</span><span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># napíše jakou databázi zrovna používáme</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Vypsání všech tabulek v databázi</h2>
+                <h2 id="vypsani-vsech-tabulek-v-databazi" class="heading-secondary u-margin-bottom-tiny">Vypsání všech tabulek v databázi</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Všechny tabulky v databázi můžeme vypsat pomocí příkazu SHOW TABLES.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SHOW</span> <span style="color: #990099; font-weight: bold;">TABLES</span><span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vypíše všechny tabulky v databázi</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Vypsání sloupců tabulky</h2>
+                <h2 id="vypsani-sloupcu-tabulky" class="heading-secondary u-margin-bottom-tiny">Vypsání sloupců tabulky</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Vypsat sloupce tabulky můžeme pomocí příkazu SHOW COLUMNS FROM. Tento příkaz nevypíše hodnoty uložené v tabulce, ale informace o sloupcích tabulky.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">SHOW</span> <span style="color: #990099; font-weight: bold;">COLUMNS</span> <span style="color: #990099; font-weight: bold;">FROM</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># vypíše informace o sloupcích tabulky, která se jmenuje users</span></pre>
@@ -63,7 +105,7 @@
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">DESC</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># zkratka pro příkaz DESCRIBE</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Vytvoření tabulky</h2>
+                <h2 id="vytvoreni-tabulky" class="heading-secondary u-margin-bottom-tiny">Vytvoření tabulky</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Novou tabulku můžeme vytvořit pomocí příkazu CREATE TABLE. Napíšeme text CREATE TABLE, za něj jméno tabulky a za jméno do závorek napíšeme sloupce tabulky oddělené čárkou. U sloupců vždy musíme určit jejich název a datový typ, který budou uchovávat.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users <span style="color: #808080; font-style: italic;"># vytvoření tabulky s názvem users</span>
@@ -73,7 +115,7 @@
     age <span style="color: #999900; font-weight: bold;">INT</span> <span style="color: #808080; font-style: italic;"># sloupec s názvem age uchovávající celé číslo</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h3 class="heading-tertiary u-margin-bottom-tiny">Zakázání hodnoty NULL ve sloupci</h3>
+                <h3 id="zakazani-hodnoty-null-ve-sloupci" class="heading-tertiary u-margin-bottom-tiny">Zakázání hodnoty NULL ve sloupci</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme aby se hodnota ve sloupci nemohla nastavit na NULL když budeme do tabulky přidávat nové položky, tak musíme ke sloupci připsat NOT NULL. Pokud bychom to tam nepřipsali, tak by se ve sloupci automaticky nastavovala hodnota NULL, pokud bychom žádnou hodnotu pro sloupec při vkládání nové položky do tabulky nespecifikovali. Zároveň NOT NULL zabrání vkládání hodnoty NULL i kdybychom to chtěli sami udělat.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
@@ -83,7 +125,7 @@
     age <span style="color: #999900; font-weight: bold;">INT</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h3 class="heading-tertiary u-margin-bottom-tiny">Nastavení defaultní hodnoty pro sloupec</h3>
+                <h3 id="nastaveni-defaultni-hodnoty-pro-sloupec" class="heading-tertiary u-margin-bottom-tiny">Nastavení defaultní hodnoty pro sloupec</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme nastavit defaultní hodnotu, která se ve sloupci nastaví když při vkládání nové položky pro sloupec žádnou hodnotu nespecifikujeme, tak to můžeme udělat připsáním slova DEFAULT s defaultní hodnotou.</p>
                 <div class="code-box u-margin-bottom-small">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
@@ -93,7 +135,7 @@
     age <span style="color: #999900; font-weight: bold;">INT</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h3 class="heading-tertiary u-margin-bottom-tiny">Unikátní hodnoty ve sloupci</h3>
+                <h3 id="unikatni-hodnoty-ve-sloupci" class="heading-tertiary u-margin-bottom-tiny">Unikátní hodnoty ve sloupci</h3>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Pokud chceme aby každá položka v tabulce měla v nějakém sloupci jinou hodnotu než ostatní položky (aby byly všechny hodnoty ve sloupci unikátní), tak můžeme ke sloupci připsat slovo UNIQUE.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">CREATE</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users
@@ -103,12 +145,12 @@
     age <span style="color: #999900; font-weight: bold;">INT</span>
 <span style="color: #FF00FF;">&#41;</span><span style="color: #000033;">;</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Smazání tabulky</h2>
+                <h2 id="smazani-tabulky" class="heading-secondary u-margin-bottom-tiny">Smazání tabulky</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Smazat tabulku můžeme pomocí příkazu DROP TABLE.</p>
                 <div class="code-box u-margin-bottom-medium">
                     <pre class="mysql" style="font-family:monospace;"><span style="color: #990099; font-weight: bold;">DROP</span> <span style="color: #990099; font-weight: bold;">TABLE</span> users<span style="color: #000033;">;</span> <span style="color: #808080; font-style: italic;"># smazání tabulky, která se jmenuje users</span></pre>
                 </div>
-                <h2 class="heading-secondary u-margin-bottom-tiny">Spouštění kódu ze souboru</h2>
+                <h2 id="spousteni-kodu-ze-souboru" class="heading-secondary u-margin-bottom-tiny">Spouštění kódu ze souboru</h2>
                 <p class="paragraph paragraph--right-padding u-margin-bottom-small">Možná to sem úplně nepatří, ale ještě jsem se sem rozhodl zařadit příkaz, pomocí kterého můžeme spouštět kód ze souboru. Příkaz pro spuštění kódu ze souboru se jmenuje SOURCE. Použijeme jej tak že za něj napíšeme cestu k souboru. Soubor musí mít koncovku sql.</p>
                 <div class="code-box">
                     <pre class="mysql" style="font-family:monospace;">source D:\codes\my_file.sql <span style="color: #808080; font-style: italic;"># spustí kód ze souboru (středník na konec nepřidáváme)</span></pre>
