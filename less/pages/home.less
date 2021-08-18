@@ -1,9 +1,13 @@
 .home-welcome-section {
     height: 100vh;
+    min-height: 40rem;
+    max-height: 90rem;
 
     background-image: url(../../media/img/Background.jpg);
     background-image: linear-gradient(rgba(@colors[almost-black], .7), rgba(@colors[almost-black], .7)), url(../../media/img/Background.jpg);
     background-size: cover;
+
+    position: relative;
 
     &__content {
         position: absolute;
@@ -24,6 +28,10 @@
     background-color: @colors[white];
     padding: 3rem;
 
+    @media (max-width: #pxToEm(400)[]) {
+        padding: 3rem 1.5rem;
+    }
+
     &__text {
         width: 100%;
         max-width: (@grid-width / 4) * 3;
@@ -41,9 +49,25 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+
+        @media (max-width: #pxToEm(960)[]) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: #pxToEm(570)[]) {
+            grid-template-columns: 100%;
+        }
+        // #respond-phone(
+        //     {
+        //         grid-template-columns: 100%;
+        //     }
+        // );
         
         :last-child {
             grid-column-start: 2;
+
+            @media (max-width: #pxToEm(960)[]) {
+                grid-column-start: auto;
+            }
         }
     }
 }
@@ -54,21 +78,54 @@
 
     padding: 3rem;
 
+    @media (max-width: #pxToEm(400)[]) {
+        padding: 3rem 1.5rem;
+    }
+
     &__content {
         width: 100%;
         max-width: @grid-width;
         margin: 0 auto;
 
         display: flex;
+
+        @media (max-width: #pxToEm(840)[]) {
+            flex-direction: column;
+        }
     }
 
     &__text-side {
         flex: 0 1 45%;
         padding-right: 2rem;
+
+        #respond-tab-port(
+            {
+                flex-basis: 40%;
+            }
+        );
+        @media (max-width: #pxToEm(840)[]) {
+            padding-right: 15rem;
+            padding-bottom: 2rem;
+        }
+        @media (max-width: #pxToEm(540)[]) {
+            padding-right: 5rem;
+        }
+        @media (max-width: #pxToEm(400)[]) {
+            padding-right: 0;
+        }
     }
 
     &__video-side {
         flex: 0 1 55%;
         padding-left: 2rem;
+
+        #respond-tab-port(
+            {
+                flex-basis: 60%;
+            }
+        );
+        @media (max-width: #pxToEm(840)[]) {
+            padding-left: 0;
+        }
     }
 }

@@ -339,6 +339,7 @@ body {
   background-color: #fa3242;
 }
 .main-navigation {
+  width: max-content;
   max-width: 40rem;
   max-height: 100vh;
   max-height: calc(100vh - 2rem);
@@ -484,9 +485,12 @@ body {
 }
 .home-welcome-section {
   height: 100vh;
+  min-height: 40rem;
+  max-height: 90rem;
   background-image: url(../../media/img/Background.jpg);
   background-image: linear-gradient(rgba(41, 41, 41, 0.7), rgba(41, 41, 41, 0.7)), url(../../media/img/Background.jpg);
   background-size: cover;
+  position: relative;
 }
 .home-welcome-section__content {
   position: absolute;
@@ -501,6 +505,11 @@ body {
 .home-cheatsheets-section {
   background-color: #fff;
   padding: 3rem;
+}
+@media (max-width: 25em) {
+  .home-cheatsheets-section {
+    padding: 3rem 1.5rem;
+  }
 }
 .home-cheatsheets-section__text {
   width: 100%;
@@ -517,13 +526,33 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
+@media (max-width: 60em) {
+  .home-cheatsheets-section__parts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 35.625em) {
+  .home-cheatsheets-section__parts {
+    grid-template-columns: 100%;
+  }
+}
 .home-cheatsheets-section__parts :last-child {
   grid-column-start: 2;
+}
+@media (max-width: 60em) {
+  .home-cheatsheets-section__parts :last-child {
+    grid-column-start: auto;
+  }
 }
 .home-about-section {
   background-color: #fff;
   border-top: 2px solid #e6e6e6;
   padding: 3rem;
+}
+@media (max-width: 25em) {
+  .home-about-section {
+    padding: 3rem 1.5rem;
+  }
 }
 .home-about-section__content {
   width: 100%;
@@ -531,13 +560,49 @@ body {
   margin: 0 auto;
   display: flex;
 }
+@media (max-width: 52.5em) {
+  .home-about-section__content {
+    flex-direction: column;
+  }
+}
 .home-about-section__text-side {
   flex: 0 1 45%;
   padding-right: 2rem;
 }
+@media (max-width: 56.25em) {
+  .home-about-section__text-side {
+    flex-basis: 40%;
+  }
+}
+@media (max-width: 52.5em) {
+  .home-about-section__text-side {
+    padding-right: 15rem;
+    padding-bottom: 2rem;
+  }
+}
+@media (max-width: 33.75em) {
+  .home-about-section__text-side {
+    padding-right: 5rem;
+  }
+}
+@media (max-width: 25em) {
+  .home-about-section__text-side {
+    padding-right: 0;
+  }
+}
 .home-about-section__video-side {
   flex: 0 1 55%;
   padding-left: 2rem;
+}
+@media (max-width: 56.25em) {
+  .home-about-section__video-side {
+    flex-basis: 60%;
+  }
+}
+@media (max-width: 52.5em) {
+  .home-about-section__video-side {
+    padding-left: 0;
+  }
 }
 .article-page {
   display: flex;
