@@ -1,0 +1,186 @@
+.main-navigation {
+    max-width: 40rem;
+    max-height: 100vh;
+    max-height: calc(100vh - 2rem);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 6;
+    transform: translate(-50%, -50%) scale(0);
+
+    background-color: @colors[grey];
+    border: 2px solid lighten(@colors[grey], 60%);
+    border-radius: 4px;
+    box-shadow: 0 1rem 1rem rgba(@colors[black], .2);
+
+    padding: 1rem;
+
+    transition: all .3s .2s;
+
+    overflow-y: auto;
+
+    // width
+    &::-webkit-scrollbar {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+    
+    // track
+    &::-webkit-scrollbar-track {
+        background: darken(@colors[pink], 20%);
+        background: lighten(@colors[grey], 10%);
+        background: @colors[very-dark-blue];
+    }
+    
+    // handle
+    &::-webkit-scrollbar-thumb {
+        background: darken(@colors[pink], 5%);
+        border-radius: 2px;
+        border: 2px solid lighten(@colors[pink], 13%);
+
+        &:hover {
+            background: @colors[pink];
+        }
+    }
+
+    &__heading {
+        font-size: 2.4rem;
+        font-weight: 700;
+
+        color: @colors[white];
+        text-align: center;
+
+        margin-bottom: .7rem;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__link {
+        display: block;
+        font-size: 1.7rem;
+        
+        padding: 1rem 1.5rem;
+
+        background-color: @colors[pink];
+        color: @colors[white];
+        border: 2px solid @colors[white];
+        border-radius: 4px;
+        text-decoration: none;
+        text-align: center;
+
+        &:hover {
+            background-color: darken(@colors[pink], 5%);
+        }
+
+        &:active {
+            background-color: darken(@colors[pink], 10%);
+        }
+    }
+}
+
+.main-navigation-btn {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+
+    background-color: @colors[pink];
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &__icon {
+        #center-pos-abs();
+        width: 60%;
+        height: 2px;
+        background-color: @colors[white];
+        transform-origin: 25% 25%;
+        transition: all .2s;
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: .8rem;
+
+            width: 100%;
+            height: 2px;
+            background-color: @colors[white];
+
+            transition: all .3s;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: .8rem;
+
+            width: 100%;
+            height: 2px;
+            background-color: @colors[white];
+
+            transition: all .3s;
+        }
+    }
+
+    &:hover &__icon {
+        &::before {
+            transform: translateY(-.2rem);
+        }
+        &::after {
+            transform: translateY(.2rem);
+        }
+    }
+}
+
+.main-navigation-background {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 5;
+
+    width: 5rem;
+    height: 5rem;
+
+    background-image: radial-gradient(circle at center, rgba(darken(@colors[pink], 5%), .5), rgba(darken(@colors[pink], 10%), .8) 30%, darken(@colors[pink], 40%));
+    border-radius: 50%;
+
+    transition: all .5s ease;
+}
+
+.main-navigation-checkbox {
+    display: none;
+
+    &:checked {
+        ~ .main-navigation-btn .main-navigation-btn__icon {
+            background-color: transparent;
+            transform: rotate(180deg);
+            &::before {
+                transform: translateY(.8rem) rotate(45deg);
+            }
+            &::after {
+                transform: translateY(-.8rem) rotate(-45deg);
+            }
+        }
+        ~ .main-navigation-background {
+            width: 140vmax;
+            height: 140vmax;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        + .main-navigation {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+}
