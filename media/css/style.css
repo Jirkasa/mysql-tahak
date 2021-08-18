@@ -114,6 +114,10 @@ body {
 .anchor:hover {
   color: #fc969e;
 }
+::selection {
+  background-color: #fc969e;
+  color: #fff;
+}
 .u-margin-bottom-tiny {
   margin-bottom: 0.5rem;
 }
@@ -144,6 +148,7 @@ body {
   color: #fff;
   text-decoration: none;
   letter-spacing: 0.1rem;
+  user-select: none;
 }
 .footer {
   font-size: 1.6rem;
@@ -164,6 +169,7 @@ body {
   text-decoration: none;
   border-radius: 5px;
   padding: 1rem 2rem;
+  user-select: none;
 }
 .main-btn:hover {
   background-color: #fa4b59;
@@ -270,6 +276,7 @@ body {
   position: relative;
   z-index: 1;
   transition: all 0.1s;
+  user-select: none;
 }
 .part-card__btn::after {
   content: "";
@@ -363,6 +370,7 @@ body {
   background-color: #fb6470;
   border-radius: 4px;
   padding: 0.5rem;
+  user-select: none;
 }
 .navigation__link:hover {
   background-color: #fa4b59;
@@ -469,6 +477,7 @@ body {
   border-radius: 4px;
   text-decoration: none;
   text-align: center;
+  user-select: none;
 }
 .main-navigation__link:hover {
   background-color: #fa4b59;
